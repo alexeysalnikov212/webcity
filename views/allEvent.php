@@ -1,4 +1,7 @@
 <?php //пример вывода всех событий
+// сюда передается массив объектов событий(items[]). для доступа к каждому можно цикл форич.
+// событие имеет свойства : 
+//name,description,price,date,ending,category_id,place_id,company_id,pictures[].
 ?>
 
 
@@ -9,7 +12,7 @@
     <body>
 <table border = "5">
     
- <?php foreach($item as $itemx):?>
+ <?php foreach($items as $itemx):?>
 <td>
 <h3><?= $itemx->name; ?></h3>
 <h3><?= $itemx->place; ?></h3>
