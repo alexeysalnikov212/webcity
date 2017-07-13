@@ -11,7 +11,7 @@
     </head>
     <body>
 <table border = "5">
-    
+   
  <?php foreach($items as $itemx):?>
 <td>
 <h3><?= $itemx->name; ?></h3>

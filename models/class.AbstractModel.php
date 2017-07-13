@@ -17,6 +17,16 @@ abstract class AbstractModel
         $db = new DB;
         return $db->queryOne("SELECT * FROM ".static::$table." WHERE id = {$id}", static::$class);
     }    
+    public static function getSome() // выводит все
+    {
+        $db = new DB;
+        $ob= new static::$class;
+        $key = $_GET['key'];
+        $value = $_GET['value'];
+        $q="SELECT * FROM ".static::$table." WHERE {$key} = '{$value}'";
+            return $db->queryAll($q, static::$class);
+    }
+    
     
 }
     

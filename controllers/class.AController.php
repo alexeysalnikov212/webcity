@@ -10,7 +10,6 @@
         {
             $ob = new static::$class; 
             $items = $ob::getAll();
-            var_dump(static::$class);
             include __DIR__."/../views/all".static::$class.".php";
         }
         public function actionOne() // показывает одно событие по id
@@ -20,5 +19,13 @@
             $item = $ob::getOne($id);
             include __DIR__."/../views/one".static::$class.".php";
         }
+        
+        public function actionSome() 
+        {
+            $ob = new static::$class; 
+            $items = $ob::getSome();
+            include __DIR__."/../views/all".static::$class.".php";
+        }
+        
     }
 ?> 
