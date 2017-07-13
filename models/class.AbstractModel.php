@@ -8,23 +8,21 @@ abstract class AbstractModel
     
     public static function getAll() // выводит все
     {
-        $db = new DB;
-        return $db->queryAll("SELECT * FROM ".static::$table, static::$class);
+        $db = new DB; // соединяемся с базой данных
+        return $db->queryAll("SELECT * FROM ".static::$table, static::$class); //выполняем запрос, заполняя данными из него новые объекты( функция fetch_object)
     }
     
-    public static function getOne($id) // выводит одно
+    public static function getOne($id) // выводит одно работает аналогично getAll
     {
         $db = new DB;
         return $db->queryOne("SELECT * FROM ".static::$table." WHERE id = {$id}", static::$class);
     }    
-    public static function getSome() // выводит все
+    public static function getSome($key,$value) // отбирает по указанному критерию 
     {
         $db = new DB;
-        $ob= new static::$class;
-        $key = $_GET['key'];
-        $value = $_GET['value'];
-        $q="SELECT * FROM ".static::$table." WHERE {$key} = '{$value}'";
-            return $db->queryAll($q, static::$class);
+        $ob= new static::$class;   // Создаем объект нужного сласса
+        $q="SELECT * FROM ".static::$table." WHERE {$key} = '{$value}'"; //формируем запрос
+            return $db->queryAll($q, static::$class); //аналогично getAll
     }
     
     

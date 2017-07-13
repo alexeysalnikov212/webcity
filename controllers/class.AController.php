@@ -5,14 +5,14 @@
 //и подключает view для вывода в html
     class AController
     {
-        public function actionAll() // берет из базы все организации и записывает их в массив объектов item 
+        public function actionAll() // берет из базы все организации/события и записывает их в массив объектов item 
             // и вызывает view для показа
         {
-            $ob = new static::$class; 
-            $items = $ob::getAll();
-            include __DIR__."/../views/all".static::$class.".php";
+            $ob = new static::$class; //создаем объект дочернего класса
+            $items = $ob::getAll(); // вызываем метод этого объкта
+            include __DIR__."/../views/all".static::$class.".php"; // подключаем вьюшку
         }
-        public function actionOne() // показывает одно событие по id
+        public function actionOne() // показывает одно событие/организацию по id работает аналогично actionAll
         {
             $ob = new static::$class; 
             $id = $_GET['id'];
@@ -20,10 +20,12 @@
             include __DIR__."/../views/one".static::$class.".php";
         }
         
-        public function actionSome() 
+        public function actionSome() //отюирает и показывает события/организации по определенному критерию 
         {
-            $ob = new static::$class; 
-            $items = $ob::getSome();
+            $ob = new static::$class;
+            $key = $_GET['key'];        //получаем данные из строки
+            $value = $_GET['value'];
+            $items = $ob::getSome($key,$value);
             include __DIR__."/../views/all".static::$class.".php";
         }
         
