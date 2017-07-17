@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2017 at 04:03 AM
+-- Generation Time: Jul 17, 2017 at 11:23 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -25,21 +25,44 @@ USE `webcity`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Table structure for table `categories`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE `categories` (
   `id` tinyint(3) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `subcategory_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `company`
+-- Table structure for table `categories_list`
 --
 
-CREATE TABLE `company` (
+CREATE TABLE `categories_list` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='categories'' list';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories_subcategories`
+--
+
+CREATE TABLE `categories_subcategories` (
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `subcategory_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `companies`
+--
+
+CREATE TABLE `companies` (
   `id` int(10) UNSIGNED NOT NULL,
   `login` varchar(255) NOT NULL,
   `hash` varchar(255) NOT NULL,
@@ -60,11 +83,11 @@ CREATE TABLE `company` (
 
 CREATE TABLE `events` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `category_id` tinyint(3) UNSIGNED NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ending` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_start` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_end` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `place_id` int(10) UNSIGNED NOT NULL,
   `company_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -77,7 +100,7 @@ CREATE TABLE `events` (
 
 CREATE TABLE `pictures` (
   `event_id` int(10) UNSIGNED NOT NULL,
-  `picture` varchar(255) NOT NULL
+  `picture_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -101,10 +124,21 @@ CREATE TABLE `places` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `social_network`
+-- Table structure for table `social_networks`
 --
 
-CREATE TABLE `social_network` (
+CREATE TABLE `social_networks` (
+  `company_id` int(10) UNSIGNED NOT NULL,
+  `social_network_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `social_networks_list`
+--
+
+CREATE TABLE `social_networks_list` (
   `id` int(10) UNSIGNED NOT NULL,
   `network` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -112,10 +146,21 @@ CREATE TABLE `social_network` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `telephone_number`
+-- Table structure for table `subcategories_list`
 --
 
-CREATE TABLE `telephone_number` (
+CREATE TABLE `subcategories_list` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='subcategories'' list';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `telephone_numbers`
+--
+
+CREATE TABLE `telephone_numbers` (
   `company_id` int(10) UNSIGNED NOT NULL,
   `telephone` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -131,7 +176,7 @@ CREATE TABLE `users` (
   `login` varchar(255) NOT NULL,
   `hash` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `picture` varchar(255) DEFAULT NULL
+  `picture_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table for users';
 
 --
@@ -139,16 +184,30 @@ CREATE TABLE `users` (
 --
 
 --
--- Indexes for table `category`
+-- Indexes for table `categories`
 --
-ALTER TABLE `category`
+ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
+  ADD UNIQUE KEY `name` (`category_id`),
+  ADD KEY `subcategory_id` (`subcategory_id`);
 
 --
--- Indexes for table `company`
+-- Indexes for table `categories_list`
 --
-ALTER TABLE `company`
+ALTER TABLE `categories_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories_subcategories`
+--
+ALTER TABLE `categories_subcategories`
+  ADD KEY `subcategory_id` (`subcategory_id`),
+  ADD KEY `category_idx` (`category_id`);
+
+--
+-- Indexes for table `companies`
+--
+ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `login` (`login`),
   ADD KEY `place_id` (`place_id`);
@@ -175,15 +234,28 @@ ALTER TABLE `places`
   ADD PRIMARY KEY (`place_id`);
 
 --
--- Indexes for table `social_network`
+-- Indexes for table `social_networks`
 --
-ALTER TABLE `social_network`
+ALTER TABLE `social_networks`
+  ADD KEY `company_id` (`company_id`),
+  ADD KEY `social_network_id` (`social_network_id`);
+
+--
+-- Indexes for table `social_networks_list`
+--
+ALTER TABLE `social_networks_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `telephone_number`
+-- Indexes for table `subcategories_list`
 --
-ALTER TABLE `telephone_number`
+ALTER TABLE `subcategories_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `telephone_numbers`
+--
+ALTER TABLE `telephone_numbers`
   ADD KEY `company_id` (`company_id`);
 
 --
@@ -198,9 +270,14 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `company`
+-- AUTO_INCREMENT for table `categories_list`
 --
-ALTER TABLE `company`
+ALTER TABLE `categories_list`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `companies`
+--
+ALTER TABLE `companies`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `events`
@@ -213,6 +290,16 @@ ALTER TABLE `events`
 ALTER TABLE `places`
   MODIFY `place_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `social_networks_list`
+--
+ALTER TABLE `social_networks_list`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `subcategories_list`
+--
+ALTER TABLE `subcategories_list`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -222,17 +309,24 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `company`
+-- Constraints for table `categories_list`
 --
-ALTER TABLE `company`
-  ADD CONSTRAINT `company_ibfk_1` FOREIGN KEY (`place_id`) REFERENCES `places` (`place_id`);
+ALTER TABLE `categories_list`
+  ADD CONSTRAINT `category` FOREIGN KEY (`id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `category_subcategory` FOREIGN KEY (`id`) REFERENCES `categories_subcategories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `companies`
+--
+ALTER TABLE `companies`
+  ADD CONSTRAINT `companies_ibfk_1` FOREIGN KEY (`place_id`) REFERENCES `places` (`place_id`);
 
 --
 -- Constraints for table `events`
 --
 ALTER TABLE `events`
-  ADD CONSTRAINT `event` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`),
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `event` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`),
+  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `events_ibfk_2` FOREIGN KEY (`place_id`) REFERENCES `places` (`place_id`) ON DELETE CASCADE;
 
 --
@@ -242,16 +336,29 @@ ALTER TABLE `pictures`
   ADD CONSTRAINT `pictures_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`);
 
 --
--- Constraints for table `social_network`
+-- Constraints for table `social_networks`
 --
-ALTER TABLE `social_network`
-  ADD CONSTRAINT `social_network_ibfk_1` FOREIGN KEY (`id`) REFERENCES `company` (`id`);
+ALTER TABLE `social_networks`
+  ADD CONSTRAINT `social_network_company` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `telephone_number`
+-- Constraints for table `social_networks_list`
 --
-ALTER TABLE `telephone_number`
-  ADD CONSTRAINT `telephone_number_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`);
+ALTER TABLE `social_networks_list`
+  ADD CONSTRAINT `social_network` FOREIGN KEY (`id`) REFERENCES `social_networks` (`social_network_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `subcategories_list`
+--
+ALTER TABLE `subcategories_list`
+  ADD CONSTRAINT `subcategory` FOREIGN KEY (`id`) REFERENCES `categories` (`subcategory_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `subcategory_category` FOREIGN KEY (`id`) REFERENCES `categories_subcategories` (`subcategory_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `telephone_numbers`
+--
+ALTER TABLE `telephone_numbers`
+  ADD CONSTRAINT `telephone_numbers_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
