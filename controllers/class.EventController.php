@@ -7,12 +7,5 @@
     {
         protected static $class = "Event";
         
-        //  public function actionToday() // берет из базы все организации и записывает их в массив объектов item 
-            // и вызывает view для показа
-       // {
-        //    $items = Event::getAll();
-    //        include __DIR__."/../views/allEvent.php";
-    //    }
-        // показывает одно событие по i
     }
 ?> 

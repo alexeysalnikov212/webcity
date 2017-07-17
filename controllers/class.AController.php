@@ -1,5 +1,5 @@
 <?php
-//класс контроллер событий
+//класс контроллер
 //к нему обращается точка входа ( index.php), вызывая нужную функцию, 
 //сам контроллер обращается к моделям(models/class.Event),получает оттуда нужную информацию
 //и подключает view для вывода в html
@@ -29,5 +29,54 @@
             include __DIR__."/../views/all".static::$class.".php";
         }
         
+        public function actionCreate() //создает новую строку в базе
+        {
+            $ob = new static::$class;
+            $keys= array_keys(get_class_vars(static::$class)); // получаем массив значений свойств объекта 
+                                                    //(name,description,и т.д.)
+            $values=[];                             //создаем массив значений, куда передадим все из $_POST
+            foreach ($keys as $key)                 //заполняем данные объекта
+            {
+                if (isset($_GET[$key]))
+                {
+                    $ob->$key=$_GET[$key];
+                    $values[] = $_GET[$key];
+                }
+                else $values[]=NULL;
+            }
+            $id = $ob->create($keys,$values);
+            $item = $ob::getOne($id);
+            include __DIR__."/../views/one".static::$class.".php";
+        }
+        
+public function actionDelete() // показывает одно событие/организацию по id работает аналогично actionAll
+        {
+            $ob = new static::$class; 
+            $id = $_GET['id'];
+            $item = $ob::deleteOne($id);
+            include __DIR__."/../views/one".static::$class.".php";
+        }
+
+public function actionChange() //изменяет строку в базе
+        {
+            $ob = new static::$class;
+            $keys= array_keys(get_class_vars(static::$class)); // получаем массив значений свойств объекта 
+                                                    //(name,description,и т.д.)
+            $values=[];                             //создаем массив значений, куда передадим все из $_POST
+            foreach ($keys as $key)                 //заполняем данные объекта
+            {
+                if (isset($_GET[$key]))
+                {
+                    $ob->$key=$_GET[$key];
+                    $values[] = $_GET[$key];
+                }
+                else $values[]=NULL;
+             //  $array[] = $key->$_GET[$key];
+            }
+           // var_dump($ob);
+            $item = $ob->create($keys,$values);
+            
+            include __DIR__."/../views/one".static::$class.".php";
+        }
     }
 ?> 
