@@ -25,7 +25,8 @@
     {
         if (empty($_SESSION["id"]))
         {
-            redirect("login.php");
+            return;
+            //redirect("index.php");
         }
     }
 
