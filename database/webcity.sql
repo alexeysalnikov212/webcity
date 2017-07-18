@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2017 at 11:23 AM
+-- Generation Time: Jul 18, 2017 at 04:17 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -31,30 +31,8 @@ USE `webcity`;
 CREATE TABLE `categories` (
   `id` tinyint(3) UNSIGNED NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
-  `subcategory_id` int(10) UNSIGNED NOT NULL
+  `parent_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categories_list`
---
-
-CREATE TABLE `categories_list` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='categories'' list';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categories_subcategories`
---
-
-CREATE TABLE `categories_subcategories` (
-  `category_id` int(10) UNSIGNED NOT NULL,
-  `subcategory_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -146,17 +124,6 @@ CREATE TABLE `social_networks_list` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subcategories_list`
---
-
-CREATE TABLE `subcategories_list` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='subcategories'' list';
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `telephone_numbers`
 --
 
@@ -189,20 +156,7 @@ CREATE TABLE `users` (
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`category_id`),
-  ADD KEY `subcategory_id` (`subcategory_id`);
-
---
--- Indexes for table `categories_list`
---
-ALTER TABLE `categories_list`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `categories_subcategories`
---
-ALTER TABLE `categories_subcategories`
-  ADD KEY `subcategory_id` (`subcategory_id`),
-  ADD KEY `category_idx` (`category_id`);
+  ADD KEY `subcategory_id` (`parent_id`);
 
 --
 -- Indexes for table `companies`
@@ -247,12 +201,6 @@ ALTER TABLE `social_networks_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `subcategories_list`
---
-ALTER TABLE `subcategories_list`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `telephone_numbers`
 --
 ALTER TABLE `telephone_numbers`
@@ -269,11 +217,6 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for dumped tables
 --
 
---
--- AUTO_INCREMENT for table `categories_list`
---
-ALTER TABLE `categories_list`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `companies`
 --
@@ -295,11 +238,6 @@ ALTER TABLE `places`
 ALTER TABLE `social_networks_list`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `subcategories_list`
---
-ALTER TABLE `subcategories_list`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -307,13 +245,6 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `categories_list`
---
-ALTER TABLE `categories_list`
-  ADD CONSTRAINT `category` FOREIGN KEY (`id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `category_subcategory` FOREIGN KEY (`id`) REFERENCES `categories_subcategories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `companies`
@@ -346,13 +277,6 @@ ALTER TABLE `social_networks`
 --
 ALTER TABLE `social_networks_list`
   ADD CONSTRAINT `social_network` FOREIGN KEY (`id`) REFERENCES `social_networks` (`social_network_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `subcategories_list`
---
-ALTER TABLE `subcategories_list`
-  ADD CONSTRAINT `subcategory` FOREIGN KEY (`id`) REFERENCES `categories` (`subcategory_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `subcategory_category` FOREIGN KEY (`id`) REFERENCES `categories_subcategories` (`subcategory_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `telephone_numbers`
