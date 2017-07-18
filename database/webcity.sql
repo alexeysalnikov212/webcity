@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2017 at 02:03 PM
+-- Generation Time: Jul 18, 2017 at 02:35 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -118,7 +118,8 @@ CREATE TABLE `social_networks` (
 
 CREATE TABLE `social_networks_list` (
   `id` int(10) UNSIGNED NOT NULL,
-  `network` varchar(255) NOT NULL
+  `network` varchar(255) NOT NULL,
+  `network_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
