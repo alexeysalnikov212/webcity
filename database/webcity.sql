@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2017 at 04:17 AM
+-- Generation Time: Jul 18, 2017 at 02:03 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -30,8 +30,8 @@ USE `webcity`;
 
 CREATE TABLE `categories` (
   `id` tinyint(3) UNSIGNED NOT NULL,
-  `category_id` int(10) UNSIGNED NOT NULL,
-  `parent_id` int(10) UNSIGNED NOT NULL
+  `category_name` varchar(255) NOT NULL COMMENT 'category''s name',
+  `parent_id` int(10) UNSIGNED NOT NULL COMMENT 'keeps parent''s category this subcategory'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -50,7 +50,7 @@ CREATE TABLE `companies` (
   `place_id` int(10) UNSIGNED NOT NULL,
   `telnumber_id` int(10) DEFAULT NULL,
   `www` varchar(255) DEFAULT NULL,
-  `picture` varchar(255) DEFAULT NULL
+  `picture_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table for company';
 
 -- --------------------------------------------------------
@@ -155,8 +155,9 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`category_id`),
+  ADD UNIQUE KEY `name` (`category_name`),
   ADD KEY `subcategory_id` (`parent_id`);
+ALTER TABLE `categories` ADD FULLTEXT KEY `category_name` (`category_name`);
 
 --
 -- Indexes for table `companies`
