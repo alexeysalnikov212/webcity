@@ -18,5 +18,13 @@ class Company extends AbstractModel
      $ob = new Event();
      $this->events = $ob->getSome("company_id",$this->id);
     }
+    
+    public static function getMain() // отбирает для главной странички 6 новостей по дате 
+    {
+        $db = new DB;   // Создаем объект нужного сласса
+        $q="SELECT * FROM companies LIMIT 6;"; //формируем запрос 
+            return $db->queryAll($q, "Company"); //возвращаем массив объектов
+    }
+
    }
 ?>
