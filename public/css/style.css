@@ -1,6 +1,14 @@
 /* Classic style for afisha */
 
+body {
+   padding: 0 !important;
+}
+
 /*nav*/
+
+#navbar {
+    padding-bottom: 100px;
+}
 .navbar .navbar-inverse {
 	border: none;
 	background-color:black;
@@ -13,21 +21,45 @@
 
 .navbar-header .navbar-brand{
 	padding-top: 20px;
-	padding-left: 30px;
 }
+
+.navbar-brand > img {
+    height: 50px;
+}
+
 /* form for search*/
 
 .navbar .navbar-nav {
 	margin-left: 70px;
 }
+
+.button-nav{
+    display:inline-block;
+    margin-right: 25px;
+    margin-top: 25px;
+}
 .form-group {
 	display: inline-block;
 	margin-bottom: 0px !important;
 	margin-top: 25px;
-	width: 230px;
 	margin-right: auto;
 	margin-left: auto;
 }
+
+.form-group .cat {
+	width: 10px;
+}
+
+.form-group .date {
+    width: 200px;
+    margin-left: 15px;
+}
+
+.form-control .search{
+    margin-left: 40px;
+    width: 180px;
+}
+
 .navbar .navbar-nav .button{
 	margin-top: 20px;
 	display: inline-block;
@@ -48,10 +80,11 @@
     max-width: 100%;
     height: auto;
 }
+
 /*for reg-in-form*/
 .btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
 .btn-labeled {padding-top: 0;padding-bottom: 0;}
-.input-group { margin-bottom:10px; }
+.input-group { margin-bottom:5px; }
 .separator { border-right: 1px solid #dfdfe0; }
 .facebook,.twitter { min-width:170px; }
 .facebook { background-color:#354E84;color:#fff; }
@@ -119,21 +152,15 @@
 .col-sm-3 {
 	height: 250px;
 }
-
-.col-xs-6 {
-	padding-right: 0px !important;
-	padding-left: 0px !important;
-}    
+  
 
 /*events*/
 
 .thumbnail {
     position:relative;
     overflow:hidden;
-	padding: 0px !important;
 	min-height: 300px;
 	max-height: 300px;
-	margin-bottom: 0px !important;
 }
  
 .caption {
@@ -250,6 +277,17 @@ background: #333333;
 
 #footer {
 	background-color:black;
+    height: 100px;
+}
+
+
+.share{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.fa {
+    color: #007bb6;
 }
 
 /* carousel */
@@ -315,4 +353,92 @@ a:focus{
 .modal-dialog {
 	width: 300px !important;
 	text-align: center !important;
+}
+ 
+ /*All company */
+
+.well{
+    background-color:white !important;
+    border: none !important;
+    min-height: 150px !important;
+}
+.picture-media{
+    height: 120px;
+    position: relative;
+    text-align: center;
+	width: 120px;
+    overflow: hidden;
+    padding: 5px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: #aaa 1px solid;
+    box-shadow: 0px 1px 1px 1px #bbb;
+    -moz-box-shadow: 0px 1px 1px 1px #bbb;
+    -webkit-box-shadow: 0px 1px 1px 1px #bbb;
+	margin-left: auto;
+	margin-right: auto;
+}
+.picture-media .img {
+    display: block;
+    width:100%;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+ /*card company */
+
+.jumbotron{
+    background-color:white !important;
+}
+
+.details li {
+      list-style: none;
+    }
+li {
+    margin-bottom:10px;      
+    }
+.img-card{
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+.container-info {
+    margin-bottom: 30px;
+}
+.card-company {
+    margin-bottom: 50px;
+}
+.container-events {
+    margin-top: 400px;
+}
+ 
+ /*google map */
+
+@font-face {
+ font-family: 'Lobster';
+ font-style: normal;
+ font-weight: 400;
+ src: local('Lobster'), local('Lobster-Regular'),
+ url(http://bootstraptema.ru/snippets/font/2016/lobster/Lobster.woff) format('woff'),
+ url(http://bootstraptema.ru/snippets/font/2016/lobster/Lobster.ttf) format('truetype');
+}
+#map {
+width: 100%; /* Ширина карты */
+height: 250px; /* Высота карты */ 
+}
+.info-window h3 {
+font-family: 'Lobster'; /* Шрифт заголовка описания */
+color: #694198; /* Цвет заголовка описания */
+}
+.info-content {
+color: #777; /* Цвет контента описания */
 }
