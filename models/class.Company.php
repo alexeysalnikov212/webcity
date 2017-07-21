@@ -10,15 +10,21 @@ class Company extends AbstractModel
     public $id;
     public $name;
     public $description;
-    public $picture;
+   // public $picture;
     public $events= array();
      
-   /*  public static function newEvent() // создает новое событие 
+    public function __construct() // при создании компании создается массив событий этой компании
     {
-        $db = new DB;
-        $ob= new static::$class;   // Создаем объект нужного сласса
-        $q="INSERT INTO events (name, description, category_id, date, ending, place_id,company_id,pictures_id)VALUES ({$_POST["name"]},{$_POST["description"]},{$_POST["catogory_id"]},{$_POST["date"]},{$_POST["ending"]},{$_POST["place_id"], {$id},{$_POST["pictures_id"]},; //формируем запрос
-            return $db->queryAll($q, static::$class); // 
-    }*/
-}
+     $ob = new Event();
+     $this->events = $ob->getSome("company_id",$this->id);
+    }
+    
+    public static function getMain() // отбирает для главной странички 6 новостей по дате 
+    {
+        $db = new DB;   // Создаем объект нужного сласса
+        $q="SELECT * FROM companies LIMIT 6;"; //формируем запрос 
+            return $db->queryAll($q, "Company"); //возвращаем массив объектов
+    }
+
+   }
 ?>
