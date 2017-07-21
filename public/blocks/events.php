@@ -2,15 +2,8 @@
 
  <div id="events">
  <div class="main-text-body">
-
-
     <h2>Самые интересные места отдыха в Краматорске ждут вас!</h2>
-
-
-
   </div>
-
-
   <div class="container-fluid ">
     <div class="content">
       <div class="row">
@@ -175,6 +168,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          </div>
-          </div>
+        </div>
+       </div>
+       </div> 
