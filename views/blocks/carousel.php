@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <a href="http://localhost/www/views/allcompany.php" style="text-align:center;border-bottom:solid 1px #eee;color:blue;"><h2> Организации Краматорска </h2> </a>
+    <a href="index.php?ctrl=company&act=all" style="text-align:center;border-bottom:solid 1px #eee;color:blue;"><h2> Организации Краматорска </h2> </a>
   </div>
   <div class="row">
     <div class="col-md-12">

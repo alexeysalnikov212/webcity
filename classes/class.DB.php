@@ -10,7 +10,7 @@ class DB
     
     public function __construct() // это основное для всех запросов
     {   
-        $this->link = new PDO('mysql:dbname=1; host=localhost','root',''); // создаем подключение
+        $this->link = new PDO('mysql:dbname=webcity; host=localhost','root',''); // создаем подключение
         $this->link->exec("SET CHARSET utf8");                              // устанавливаем русский язык
     }
     

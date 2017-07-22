@@ -9,7 +9,7 @@
 <div class="container">
   <div class="well">
       <div class="media">
-      	<a href="http://localhost/www/views/card-companys.php" class="pull-left">
+      	<a href="/index.php?ctrl=company&act=one" class="pull-left">
     		<img class="picture-media" src="http://placekitten.com/150/150">
   		</a>
   		    <div class="company-name">
