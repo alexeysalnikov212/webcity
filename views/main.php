@@ -34,8 +34,7 @@
 <body>
 <div id="container-fluid">
 	<?php include ("blocks/navbar.php");?>
-  <?php include ("blocks/header.php");?>
-	<?php include ("blocks/events.php");?>
+  <?php include ("blocks/events.php");?>
   <?php include ("blocks/carousel.php");?>
   <?php include ("blocks/footer.php");?>
 
