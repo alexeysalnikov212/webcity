@@ -14,8 +14,8 @@
     require("helpers.php");
 
     // WC Library
-    require("library/WC.php");
-    WC::init(__DIR__ . "/../config/db.config.json");
+    require("class.DB.php");
+    
 
     // enable sessions
     session_start();

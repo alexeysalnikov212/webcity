@@ -1,8 +1,8 @@
 {
     "database": {
         "host": "localhost",
-        "name": "db",
-        "username": "webcity",
-        "password": "password"
+        "name": "webcity",
+        "username": "root",
+        "password": ""
     }
 }

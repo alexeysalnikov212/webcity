@@ -1,67 +1,58 @@
 <?php
+//класс датабэйс - соединяется с базой данных, выполняет запросы
+//обращаться так : 
+//$db = new DB; 
+//return $db->нужная функция от ДБ("Запрос",["класс, в который нужно преобразовать данные из запроса"]);
+
+class DB
+{ 
+    private static $config;
+    private static $init_file_path = __DIR__ . "/../config/db.config.json";
+    public $link;
+
+
+    public function __construct() // это основное для всех запросов
+    {   
+        self::init(__DIR__ . "/../config/db.config.json");
+        $this->link = new PDO("mysql:dbname=" . self::$config["database"]["name"] . ";host=" . self::$config["database"]["host"],
+                                self::$config["database"]["username"],
+                                self::$config["database"]["password"]
+        ); // создаем подключение
+        $this->link->exec("SET CHARSET utf8");                              // устанавливаем русский язык
+    }
 
     /**
-     * WC Library
-     *
-     * @package WC
-     * @version 1
-     * 
-     * Copyright (c) 2017
-     * All Rights Reserved
-     *
-     * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
-     * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
-     * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-     * PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-     * HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-     * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-     * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-     * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-     * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-     * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-     * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-     */
-
-    // WC
-    class WC
-    {
-        /**
-         * Library's configuration.
-         */
-        private static $config;
-
-        /**
-         * Initializes library with JSON file at $path.
-         */
+    * Инициализация базы данных из JSON файла.
+    */
         public static function init($path)
         {
-            // ensure library is not already initialized
+            // убедится что еще не инициализированна
             if (isset(self::$config))
             {
-                trigger_error("WC Library is already initialized", E_USER_ERROR);
+                return;
             }
 
-            // ensure configuration file exists
+            // убедится что файл конфигурации доступен
             if (!is_file($path))
             {
                 trigger_error("Could not find {$path}", E_USER_ERROR);
             }
 
-            // read contents of configuration file
+            // чтение конфигурационного файла
             $contents = file_get_contents($path);
             if ($contents === false)
             {
                 trigger_error("Could not read {$path}", E_USER_ERROR);
             }
 
-            // decode contents of configuration file
+            // декодирование конфигурационного файла
             $config = json_decode($contents, true);
             if (is_null($config))
             {
                 trigger_error("Could not decode {$path}", E_USER_ERROR);
             }
 
-            // store configuration
+            // сохранение конфигурации
             self::$config = $config;
         }
 
@@ -169,6 +160,30 @@
                 return $statement->rowCount();
             }
         }
-    }
+    
+    /* public function query($query,$parameters=[])  // выбирает из таблицы все записи
+    {
+        $handle = $this->link->prepare($query);             //подготовка запроса
+        $x= $handle->execute($parameters);                     //выполнение запроса
+        //var_dump($handle->errorInfo());  // передача данных в форме объектов
+        return $x;
+    } */
 
-?>
+/*     public function query1($query,$parameters=[])  // для создания
+    {
+        $handle = $this->link->prepare($query);             //подготовка запроса
+        $handle->execute($parameters);                     //выполнение запроса
+        return $this->link->lastInsertId();
+          // передача данных в форме объектов
+    } */
+    public function queryAll($query,$class="stdClass",$parameters=[])  // выбирает из таблицы все записи
+    {
+        $handle = $this->link->prepare($query);             //подготовка запроса
+        $handle->execute($parameters);                     //выполнение запроса
+        return $handle->fetchAll(PDO::FETCH_CLASS,$class);  // передача данных в форме объектов
+    }
+     public function queryOne($query, $class = "stdClass",$parameters=[]) //выбирает из таблицы одну строку
+    {
+        return $this->queryAll($query,$class)[0];
+    }
+   }
