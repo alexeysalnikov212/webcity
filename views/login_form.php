@@ -27,6 +27,6 @@
 								 </form>
 							</div>
 							<div class="bottom text-center">
-								Нет аккаунта ? <a href="register.php"><b>Регистрация</b></a>
+								Нет аккаунта ? <a href="?ctrl=Register&act=index"><b>Регистрация</b></a>
 							</div>
 					 </div>
