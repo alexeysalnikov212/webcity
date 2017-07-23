@@ -45,12 +45,10 @@
     pause: true,
     interval: false,
     });
-    });
     </script> 
           <script>
-              $('#datetimepicker').datetimepicker({ pickTime: false, language: 'ru' }
+              $('#datetimepicker').datetimepicker({ pickTime: false, language: 'ru', defaultDate: new Date() }
               );
-
             </script>
 
             <script>
