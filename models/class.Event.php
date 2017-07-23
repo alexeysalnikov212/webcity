@@ -7,12 +7,13 @@ class Event extends AbstractModel
         
     //свойства
     public $id;
-    public $name;
-    public $place;
-    public $time;
-    public $price;
+    public $title;
     public $description;
-    
+    public $category_id;
+    public $date_start;
+    public $date_end;
+    public $place_id;
+    public $company_id;
     //public $foto;    
 
 //это надо будет переделать в абстракнтый класс
@@ -20,7 +21,7 @@ class Event extends AbstractModel
 public function getMain() // отбирает для главной странички 6 новостей по дате 
     {
         $db = new DB;   // Создаем объект нужного сласса
-        $q="SELECT * FROM events ORDER BY price LIMIT 6"; //формируем запрос 
+        $q="SELECT * FROM events ORDER BY date_start LIMIT 6"; //формируем запрос 
             return $db->queryAll($q, "Event"); //возвращаем массив объектов
     }
 }

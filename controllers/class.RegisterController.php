@@ -6,7 +6,7 @@
     {
         public function actionindex()
         {            
-            include __DIR__."/../views/register.php"; // подключаем вьюшку
+            include __DIR__."/../views/Register.php"; // подключаем вьюшку
         }
     }
 ?> 

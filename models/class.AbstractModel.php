@@ -25,5 +25,13 @@ abstract class AbstractModel
             return $db->queryAll($q, static::$class); //аналогично getAll
     }
 
+    public static function create($keys,$values) // отбирает по указанному критерию 
+    {
+        $db = new DB;
+       $ikeys = implode(", ",$keys);
+        $ivalues = implode("', '",$values);
+        $q="INSERT INTO `".static::$table. "` ({$ikeys}) VALUES ('{$ivalues}')";
+        return $db->query1($q);
+    }
 }
 ?>

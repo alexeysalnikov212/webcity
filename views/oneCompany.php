@@ -3,7 +3,7 @@
      <title>Афиша Краматорска</title>
     </head>
     <body>
-<h3><?= $item->name; ?></h3>
+<h3><?= $item->fullname; ?></h3>
 <h3><?= $item->description; ?></h3>
     </body>
 </html>

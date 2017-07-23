@@ -6,19 +6,24 @@
     <h2>Все развлекательные организации города Краматорска</h2>
   </div>
   
+    
 <div class="container">
-  <div class="well">
+  
+    <?php
+    foreach($items as $itemx):?>
+    
+    <div class="well">
       <div class="media">
-      	<a href="/index.php?ctrl=company&act=one" class="pull-left">
+      	<a href="/index.php?ctrl=company&act=one&id=<?= $itemx->id; ?>" class="pull-left">
     		<img class="picture-media" src="http://placekitten.com/150/150">
   		</a>
   		    <div class="company-name">
-    		<h4>Кинотеатр "Родина"</h4>
+            
+
+    		<h4><?= $itemx->fullname; ?></h4>
             </div>
             <div class="company-description">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.</p>
+                <p><?= $itemx->description; ?></p>
             </div>
 
             <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
@@ -28,6 +33,8 @@ dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis eleme
            
        </div>
     </div>
+    <?php endforeach
+    /*
     <div class="well">
       <div class="media">
       	<a class="pull-left" href="#">
@@ -71,3 +78,6 @@ dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis eleme
     </div>
 </div>
 </div>
+
+*/
+    ?>

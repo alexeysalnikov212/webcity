@@ -169,13 +169,13 @@ class DB
         return $x;
     } */
 
-/*     public function query1($query,$parameters=[])  // для создания
+     public function query1($query,$parameters=[])  // для создания
     {
         $handle = $this->link->prepare($query);             //подготовка запроса
         $handle->execute($parameters);                     //выполнение запроса
         return $this->link->lastInsertId();
           // передача данных в форме объектов
-    } */
+    } 
     public function queryAll($query,$class="stdClass",$parameters=[])  // выбирает из таблицы все записи
     {
         $handle = $this->link->prepare($query);             //подготовка запроса

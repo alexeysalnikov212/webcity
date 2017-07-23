@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Июл 20 2017 г., 12:02
--- Версия сервера: 5.7.14
--- Версия PHP: 5.6.25
+-- Время создания: Июл 24 2017 г., 01:16
+-- Версия сервера: 10.1.21-MariaDB
+-- Версия PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,15 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `webcity`
+-- База данных: `webcity`
 --
-CREATE DATABASE IF NOT EXISTS `webcity` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `webcity`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Структура таблицы `categories`
 --
 
 CREATE TABLE `categories` (
@@ -35,9 +33,8 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `categories`
+-- Дамп данных таблицы `categories`
 --
-
 
 INSERT INTO `categories` (`id`, `category_name`, `parent_id`) VALUES
 (1, 'Reserved', 0),
@@ -53,7 +50,7 @@ INSERT INTO `categories` (`id`, `category_name`, `parent_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `companies`
+-- Структура таблицы `companies`
 --
 
 CREATE TABLE `companies` (
@@ -67,16 +64,16 @@ CREATE TABLE `companies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table for company';
 
 --
--- Dumping data for table `companies`
+-- Дамп данных таблицы `companies`
 --
 
 INSERT INTO `companies` (`id`, `fullname`, `description`, `place_id`, `email`, `www`, `picture_url`) VALUES
 (1, 'Webcity', 'A webcity company.', 1, 'infomail.webcity@gmail.com', '', ''),
-(2, '"Родина"', 'Kинотеатр "Родина".', 1, 'rodina_kino@mail.ru', 'http://rodina.mk/', ''),
+(2, '\"Родина\"', 'Kинотеатр \"Родина\".', 1, 'rodina_kino@mail.ru', 'http://rodina.mk/', ''),
 (3, 'ДК и Т НКМЗ', 'Городской Дворец Культуры и Техники НКМЗ.', 1, 'nspdkit@gmail.com', '', ''),
-(4, '"Юбилейный"', 'Парк "Юбилейный".', 1, '', '', ''),
+(4, '\"Юбилейный\"', 'Парк \"Юбилейный\".', 1, '', '', ''),
 (5, 'Парк им. А.С.Пушкина ', 'Парк им. А.С.Пушкина.', 1, '', '', ''),
-(6, ' ДК "Строитель"', 'Городской дворец культуры «Строитель».', 1, '', '', ''),
+(6, ' ДК \"Строитель\"', 'Городской дворец культуры «Строитель».', 1, '', '', ''),
 (7, '«Сад Бернацкого»', 'Парк «Сад Бернацкого».', 1, '', '', ''),
 (8, 'Краматорский художественный музей', 'Краматорский художественный музей.', 1, '', '', ''),
 (9, 'Музей', 'Музей истории города Краматорска.', 1, '', '', ''),
@@ -88,7 +85,7 @@ INSERT INTO `companies` (`id`, `fullname`, `description`, `place_id`, `email`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `events`
+-- Структура таблицы `events`
 --
 
 CREATE TABLE `events` (
@@ -103,16 +100,20 @@ CREATE TABLE `events` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `events`
+-- Дамп данных таблицы `events`
 --
 
 INSERT INTO `events` (`id`, `title`, `description`, `category_id`, `date_start`, `date_end`, `place_id`, `company_id`) VALUES
-(1, 'Birthday', 'Happy Birthday!', 1, '2017-07-19 14:06:49', '2017-07-19 14:06:49', 1, 1);
+(1, 'Birthday', 'Happy Birthday!', 1, '2017-07-19 14:06:49', '2017-07-19 14:06:49', 1, 1),
+(8, 'Велопробег', 'Приглашаем Вас на велопробег', 2, '2017-07-27 13:00:00', '2017-07-30 17:00:00', 1, 1),
+(9, 'Мотопробег', 'Мотобробег - это лучше, чем велопробег', 4, '2017-07-28 14:00:00', '2017-07-28 19:00:00', 1, 1),
+(10, 'Автопробег', 'Приглашаем Вас сюда, будет круто', 1, '2017-07-29 19:00:00', '2017-07-29 23:00:00', 1, 10),
+(11, 'Авиапробег', 'Вероятно, лучший пробег', 1, '2017-07-21 00:00:00', '2017-07-26 00:00:00', 1, 11);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pictures`
+-- Структура таблицы `pictures`
 --
 
 CREATE TABLE `pictures` (
@@ -123,7 +124,7 @@ CREATE TABLE `pictures` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `places`
+-- Структура таблицы `places`
 --
 
 CREATE TABLE `places` (
@@ -139,7 +140,7 @@ CREATE TABLE `places` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `places`
+-- Дамп данных таблицы `places`
 --
 
 INSERT INTO `places` (`place_id`, `name`, `latitude`, `longitude`, `city`, `street`, `house`, `apartment`, `postalcode`) VALUES
@@ -149,7 +150,7 @@ INSERT INTO `places` (`place_id`, `name`, `latitude`, `longitude`, `city`, `stre
 -- --------------------------------------------------------
 
 --
--- Table structure for table `social_networks`
+-- Структура таблицы `social_networks`
 --
 
 CREATE TABLE `social_networks` (
@@ -159,7 +160,7 @@ CREATE TABLE `social_networks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `social_networks`
+-- Дамп данных таблицы `social_networks`
 --
 
 INSERT INTO `social_networks` (`company_id`, `social_network_id`, `company_network_url`) VALUES
@@ -168,7 +169,7 @@ INSERT INTO `social_networks` (`company_id`, `social_network_id`, `company_netwo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `social_networks_list`
+-- Структура таблицы `social_networks_list`
 --
 
 CREATE TABLE `social_networks_list` (
@@ -178,7 +179,7 @@ CREATE TABLE `social_networks_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `social_networks_list`
+-- Дамп данных таблицы `social_networks_list`
 --
 
 INSERT INTO `social_networks_list` (`id`, `network`, `network_url`) VALUES
@@ -189,7 +190,7 @@ INSERT INTO `social_networks_list` (`id`, `network`, `network_url`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `telephone_numbers`
+-- Структура таблицы `telephone_numbers`
 --
 
 CREATE TABLE `telephone_numbers` (
@@ -198,7 +199,7 @@ CREATE TABLE `telephone_numbers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `telephone_numbers`
+-- Дамп данных таблицы `telephone_numbers`
 --
 
 INSERT INTO `telephone_numbers` (`company_id`, `telephone`) VALUES
@@ -207,7 +208,7 @@ INSERT INTO `telephone_numbers` (`company_id`, `telephone`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Структура таблицы `users`
 --
 
 CREATE TABLE `users` (
@@ -219,7 +220,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table for users';
 
 --
--- Dumping data for table `users`
+-- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `login`, `hash`, `email`, `picture_url`) VALUES
@@ -233,7 +234,7 @@ INSERT INTO `users` (`id`, `login`, `hash`, `email`, `picture_url`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_companies`
+-- Структура таблицы `users_companies`
 --
 
 CREATE TABLE `users_companies` (
@@ -242,7 +243,7 @@ CREATE TABLE `users_companies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='connect users and companies';
 
 --
--- Dumping data for table `users_companies`
+-- Дамп данных таблицы `users_companies`
 --
 
 INSERT INTO `users_companies` (`id_user`, `id_company`) VALUES
@@ -254,11 +255,11 @@ INSERT INTO `users_companies` (`id_user`, `id_company`) VALUES
 (6, 1);
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `categories`
+-- Индексы таблицы `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
@@ -267,14 +268,14 @@ ALTER TABLE `categories`
 ALTER TABLE `categories` ADD FULLTEXT KEY `category_name` (`category_name`);
 
 --
--- Indexes for table `companies`
+-- Индексы таблицы `companies`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`),
   ADD KEY `place_id` (`place_id`);
 
 --
--- Indexes for table `events`
+-- Индексы таблицы `events`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`id`),
@@ -283,92 +284,92 @@ ALTER TABLE `events`
   ADD KEY `place_id` (`place_id`);
 
 --
--- Indexes for table `pictures`
+-- Индексы таблицы `pictures`
 --
 ALTER TABLE `pictures`
   ADD KEY `event_id` (`event_id`);
 
 --
--- Indexes for table `places`
+-- Индексы таблицы `places`
 --
 ALTER TABLE `places`
   ADD PRIMARY KEY (`place_id`);
 
 --
--- Indexes for table `social_networks`
+-- Индексы таблицы `social_networks`
 --
 ALTER TABLE `social_networks`
   ADD KEY `company_id` (`company_id`),
   ADD KEY `social_network_id` (`social_network_id`);
 
 --
--- Indexes for table `social_networks_list`
+-- Индексы таблицы `social_networks_list`
 --
 ALTER TABLE `social_networks_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `telephone_numbers`
+-- Индексы таблицы `telephone_numbers`
 --
 ALTER TABLE `telephone_numbers`
   ADD UNIQUE KEY `telephone` (`telephone`),
   ADD KEY `company_id` (`company_id`);
 
 --
--- Indexes for table `users`
+-- Индексы таблицы `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`login`);
 
 --
--- Indexes for table `users_companies`
+-- Индексы таблицы `users_companies`
 --
 ALTER TABLE `users_companies`
   ADD UNIQUE KEY `User_unique` (`id_user`),
   ADD KEY `id_company` (`id_company`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `companies`
+-- AUTO_INCREMENT для таблицы `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
--- AUTO_INCREMENT for table `events`
+-- AUTO_INCREMENT для таблицы `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- AUTO_INCREMENT for table `places`
+-- AUTO_INCREMENT для таблицы `places`
 --
 ALTER TABLE `places`
   MODIFY `place_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `social_networks_list`
+-- AUTO_INCREMENT для таблицы `social_networks_list`
 --
 ALTER TABLE `social_networks_list`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- Constraints for dumped tables
+-- Ограничения внешнего ключа сохраненных таблиц
 --
 
 --
--- Constraints for table `companies`
+-- Ограничения внешнего ключа таблицы `companies`
 --
 ALTER TABLE `companies`
   ADD CONSTRAINT `companies_ibfk_1` FOREIGN KEY (`place_id`) REFERENCES `places` (`place_id`);
 
 --
--- Constraints for table `events`
+-- Ограничения внешнего ключа таблицы `events`
 --
 ALTER TABLE `events`
   ADD CONSTRAINT `event` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`),
@@ -376,26 +377,26 @@ ALTER TABLE `events`
   ADD CONSTRAINT `events_ibfk_2` FOREIGN KEY (`place_id`) REFERENCES `places` (`place_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `pictures`
+-- Ограничения внешнего ключа таблицы `pictures`
 --
 ALTER TABLE `pictures`
   ADD CONSTRAINT `pictures_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`);
 
 --
--- Constraints for table `social_networks`
+-- Ограничения внешнего ключа таблицы `social_networks`
 --
 ALTER TABLE `social_networks`
   ADD CONSTRAINT `social_network_company` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `social_network_list` FOREIGN KEY (`social_network_id`) REFERENCES `social_networks_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `telephone_numbers`
+-- Ограничения внешнего ключа таблицы `telephone_numbers`
 --
 ALTER TABLE `telephone_numbers`
   ADD CONSTRAINT `telephone_numbers_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`);
 
 --
--- Constraints for table `users_companies`
+-- Ограничения внешнего ключа таблицы `users_companies`
 --
 ALTER TABLE `users_companies`
   ADD CONSTRAINT `company_id_companies` FOREIGN KEY (`id_company`) REFERENCES `companies` (`id`),

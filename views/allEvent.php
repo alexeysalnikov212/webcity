@@ -14,10 +14,10 @@
    
  <?php foreach($items as $itemx):?>
 <td>
-<h3><?= $itemx->name; ?></h3>
-<h3><?= $itemx->place; ?></h3>
-<h3><?= $itemx->price; ?></h3>
-<h3><?= $itemx->time; ?></h3>
+<h3><?= $itemx->title; ?></h3>
+<h3><?= $itemx->description; ?></h3>
+<h3><?= $itemx->date_start; ?></h3>
+<h3><?= $itemx->date_end; ?></h3>
 </td>    
         <?php endforeach?>
     </table>
