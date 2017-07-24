@@ -7,9 +7,11 @@
 */
     class AController
     {
+        
         public function actionAll() // берет из базы все организации/события и записывает их в массив объектов item 
             // и вызывает view для показа
         {
+            $path="http://127.0.0.1/final/final_dev/public/";
             $ob = new static::$class; //создаем объект дочернего класса
             $items = $ob::getAll(); // вызываем метод этого объкта
             include __DIR__."/../views/all".static::$class.".php"; // подключаем вьюшку

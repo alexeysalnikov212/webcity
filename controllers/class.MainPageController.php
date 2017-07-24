@@ -10,6 +10,8 @@
         {
             $obEvent = new Event; //создаем объект 
             $obCompany = new Company;
+         
+            $path="http://127.0.0.1/final/final_dev/public/";
             
             $events = $obEvent->getMain(); // вызываем метод этого объкта 
             $companies = $obCompany->getMain();//и записываем данные в переменные

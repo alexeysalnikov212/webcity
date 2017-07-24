@@ -22,7 +22,7 @@
               <div class="event-date">
                 <h3><?= $itemx->date_start; ?></h3>
               </div>
-              <p><a href="/index.php?ctrl=event&act=one&id=<?= $itemx->id; ?>" class="label label-default">Узнать больше</a></p>
+              <p><a href="<?= $path; ?>/index.php?ctrl=event&act=one&id=<?= $itemx->id; ?>" class="label label-default">Узнать больше</a></p>
 
             </div>
             <div class="event-picture">

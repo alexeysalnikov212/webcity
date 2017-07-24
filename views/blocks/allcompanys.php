@@ -15,7 +15,7 @@
     <div class="well">
       <div class="media">
 
-      	<a href="/index.php?ctrl=company&act=one&id=<?= $itemx->id; ?>" class="pull-left">
+      	<a href="<?= $path; ?>/index.php?ctrl=company&act=one&id=<?= $itemx->id; ?>" class="pull-left">
 
     		<img class="picture-media" src="http://placekitten.com/150/150">
   		</a>

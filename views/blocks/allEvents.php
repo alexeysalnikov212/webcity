@@ -7,26 +7,32 @@
   <div class="container-fluid ">
     <div class="content">
       <div class="row">
+          
+          <?php
+    foreach($items as $itemx):?>
+          
         <div class="col-xs-6 col-sm-4 col-md-3">
           <div class="thumbnail">
             <div class="caption">
               <div class="event-title">
-                <h2>Велопробег</h2>
+                <h2><?= $itemx->title; ?></h2>
               </div>
               <div class="event-description">
-                <p>Приглашаем принять участие в велопробеге...</p>
+                <p><?= $itemx->description; ?></p>
               </div>
               <div class="event-date">
-                <h3>24.07.2017</h3>
+                <h3><?= $itemx->date_start; ?></h3>
               </div>
-              <p><a href="index.php?ctrl=event&act=one&id=1" class="label label-default">Узнать больше</a></p>
+              <p><a href="<?= $path; ?>index.php?ctrl=event&act=one&id=<?= $itemx->id; ?>" class="label label-default">Узнать больше</a></p>
             </div>
             <div class="event-picture">
               <div class="event-picture-wrap" style="background-image: url(img/Velosipedisty.jpg);"><img src="img/Velosipedisty.jpg" alt="" title=""></div>
               </div>
           </div>
         </div>
-
+<?php endforeach
+          
+          /*
         <div class="col-xs-6 col-sm-4 col-md-3">
           <div class="thumbnail">
             <div class="caption">
@@ -168,6 +174,8 @@
                 </div>
               </div>
             </div>
+              */?>
+          </div>
   <div class="container"> 
     <nav aria-label="pagination">
     <ul class="pagination">

@@ -14,7 +14,7 @@ class Company extends AbstractModel
     public $email;
     public $www;
     public $picture_url;
-    /* public $events= array();
+    /*public $events= [];
      
     public function __construct() // при создании компании создается массив событий этой компании
     {
@@ -22,7 +22,6 @@ class Company extends AbstractModel
      $this->events = $ob->getSome("company_id",$this->id);
     }
     */
-    
     public static function getMain() // отбирает для главной странички 6 новостей по дате 
     {
         $db = new DB;   // Создаем объект нужного сласса
