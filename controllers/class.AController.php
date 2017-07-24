@@ -38,10 +38,10 @@
             $values=[];         //создаем массив значений, куда передадим все из $_POST
             foreach ($keys as $key)         //заполняем данные объекта
             {
-                if (isset($_GET[$key]))
+                if (isset($_POST[$key]))
                 {
-                    $ob->$key=$_GET[$key];
-                    $values[] = $_GET[$key];
+                    $ob->$key=$_POST[$key];
+                    $values[] = $_POST[$key];
                 }
                 else $values[]=NULL;        //если данных нет, пишем нул
             }

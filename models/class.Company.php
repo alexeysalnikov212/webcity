@@ -7,22 +7,26 @@ class Company extends AbstractModel
     protected static $class = "Company";//для связи с базой из абстрактной модели
     
     //свойства
-    public $id;
-    public $name;
+   public $id;
+    public $fullname;
     public $description;
-   // public $picture;
-    public $events= array();
+    public $place_id;
+    public $email;
+    public $www;
+    public $picture_url;
+    /* public $events= array();
      
     public function __construct() // при создании компании создается массив событий этой компании
     {
      $ob = new Event();
      $this->events = $ob->getSome("company_id",$this->id);
     }
+    */
     
     public static function getMain() // отбирает для главной странички 6 новостей по дате 
     {
         $db = new DB;   // Создаем объект нужного сласса
-        $q="SELECT * FROM companies LIMIT 6;"; //формируем запрос 
+        $q="SELECT * FROM companies LIMIT 9;"; //формируем запрос 
             return $db->queryAll($q, "Company"); //возвращаем массив объектов
     }
 
