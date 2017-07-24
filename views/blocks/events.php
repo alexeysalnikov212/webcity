@@ -23,6 +23,7 @@
                 <h3><?= $itemx->date_start; ?></h3>
               </div>
               <p><a href="/index.php?ctrl=event&act=one&id=<?= $itemx->id; ?>" class="label label-default">Узнать больше</a></p>
+
             </div>
             <div class="event-picture">
               <div class="event-picture-wrap" style="background-image: url(img/Velosipedisty.jpg);"><img src="img/Velosipedisty.jpg" alt="" title=""></div>
@@ -43,7 +44,7 @@
               <div class="event-date">
                 <h3>24.07.2017</h3>
               </div>
-              <p><a href="" class="label label-default">Узнать больше</a></p>
+              <p><a href="index.php?ctrl=event&act=one&id=1" class="label label-default">Узнать больше</a></p>
             </div>
             <div class="event-picture">
               <div class="event-picture-wrap" style="background-image: url(img/page3-img4.jpg);"><img src="img/page3-img4.jpg" alt="" title=""></div>
@@ -83,7 +84,7 @@
               <div class="event-date">
                 <h3>24.07.2017</h3>
               </div>
-              <p><a href="" class="label label-default">Узнать больше</a></p>
+              <p><a href="index.php?ctrl=event&act=one&id=1" class="label label-default">Узнать больше</a></p>
             </div>
             <div class="event-picture">
               <div class="event-picture-wrap" style="background-image: url(img/page3-img4.jpg);"><img src="img/page3-img4.jpg" alt="" title=""></div>
@@ -173,7 +174,6 @@
               </div>
             </div>
       */?>
-      
+       <a href="index.php?ctrl=event&act=all" style="color:white;"><button type="button" class="btn btn-succ btn-lg btn-block">
+        Посмотреть все события в Краматорске</button></a>
       </div>
-       </div>
-       </div> 
