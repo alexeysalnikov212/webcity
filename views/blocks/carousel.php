@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <a href="<?= $path; ?>index.php?ctrl=company&act=all" style="text-align:center;border-bottom:solid 1px #eee;color:blue;"><h2> Организации Краматорска </h2> </a>
+    <a href="?ctrl=company&act=all" style="text-align:center;border-bottom:solid 1px #eee;color:blue;"><h2> Организации Краматорска </h2> </a>
   </div>
   <div class="row">
    
@@ -25,7 +25,7 @@
                 ?>
             <div class="col-md-4">
                 <div class="company-picture">
-                    <a class="thumbnail-com" href="<?= $path; ?>/index.php?ctrl=company&act=one&id=<?= $itemx->id; ?>"><img class="img-responsive img-circle" alt="" src="img/Velosipedisty.jpg" ></a>
+                    <a class="thumbnail-com" href="?ctrl=company&act=one&id=<?= $itemx->id; ?>"><img class="img-responsive img-circle" alt="" src="img/Velosipedisty.jpg" ></a>
                     </div> 
                     <div class="company-fullname">
                         <h2><?= $itemx->fullname; ?></h2>

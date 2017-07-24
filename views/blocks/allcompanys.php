@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
 
 <div id="all-companies">
@@ -15,7 +14,7 @@
     <div class="well">
       <div class="media">
 
-      	<a href="<?= $path; ?>/index.php?ctrl=company&act=one&id=<?= $itemx->id; ?>" class="pull-left">
+      	<a href="?ctrl=company&act=one&id=<?= $itemx->id; ?>" class="pull-left">
 
     		<img class="picture-media" src="http://placekitten.com/150/150">
   		</a>
@@ -36,7 +35,7 @@
        </div>
        <div class="company-footer">
        <span class="pull-right buttons">
-           <a class="btn btn-sm btn-primary" href="index.php?ctrl=company&act=one&id=1" role="button">Больше</a>
+           <a class="btn btn-sm btn-primary" href="?ctrl=company&act=one&id=1" role="button">Больше</a>
         </span>  
       </div>
 
