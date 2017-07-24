@@ -434,6 +434,7 @@ li {
 #map {
 width: 100%; /* Ширина карты */
 height: 250px; /* Высота карты */ 
+margin-bottom: 50px;
 }
 .info-window h3 {
 font-family: 'Lobster'; /* Шрифт заголовка описания */
@@ -441,4 +442,65 @@ color: #694198; /* Цвет заголовка описания */
 }
 .info-content {
 color: #777; /* Цвет контента описания */
+}
+
+
+
+/* Main carousel style */
+.slide-event {
+    width: 600px;
+    height: 400px;
+}
+
+/* Indicators list style */
+.article-slide .carousel-indicators {
+    bottom: 0;
+    left: 0;
+    margin-left: 5px;
+    width: 100%;
+}
+/* Indicators list style */
+.article-slide .carousel-indicators li {
+    border: medium none;
+    border-radius: 0;
+    float: left;
+    height: 54px;
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: 5px !important;
+    margin-top: 0;
+    width: 100px;
+}
+/* Indicators images style */
+.article-slide .carousel-indicators img {
+    border: 2px solid #FFFFFF;
+    float: left;
+    height: 54px;
+    left: 0;
+    width: 100px;
+}
+/* Indicators active image style */
+.article-slide .carousel-indicators .active img {
+    border: 2px solid #428BCA;
+    opacity: 0.7;
+}
+
+
+.company-footer {
+    margin-right: 50px;
+    margin-bottom: 5px;
+}
+
+#all-companies {
+    margin-bottom: 40px;
+}
+
+.btn-succ:hover, .btn-succ:focus, .focus.btn-succ, .btn-succ:active, .active.btn-succ, .open > .btn-succ.dropdown-toggle {
+    background-color:gray !important;
+    border: none !important;
+}
+
+.btn-succ {
+    background-color:black !important;
+    border: none !important;
 }

@@ -22,9 +22,8 @@
   <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
  
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 <script src="http://bootstraptema.ru/snippets/element/2016/maps/custom.js"></script>
-
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -37,7 +36,7 @@
 <body>
 <div id="container-fluid">
 	<?php include ("/blocks/navbar.php");?>
-  <?php include ("/blocks/event.php");?>
+  <?php include ("/blocks/card-company.php");?>
   <?php include ("/blocks/footer.php");?>
 </div>
            
@@ -57,11 +56,6 @@
               $(document).ready(function () {
                 $(".iframe").colorbox({ iframe: true, width: "50%", height: "90%", speed: 500, transition: "fade", fadeOut: 500 });
               });
-            </script>
-            <script>
-              $('.carousel').carousel({
-                      interval: false
-             });
             </script>
 
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
