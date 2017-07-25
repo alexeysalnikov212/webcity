@@ -61,7 +61,7 @@
         </div>
 <?php endforeach
     ?>
-  
+</div>  
   <div class="container"> 
     <nav aria-label="pagination">
     <ul class="pagination">
@@ -79,7 +79,7 @@
     </li>
   </ul>
 </nav>
-</div>
+
 
 </div>
 </div>  
