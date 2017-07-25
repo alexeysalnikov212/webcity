@@ -14,14 +14,28 @@ class Company extends AbstractModel
     public $email;
     public $www;
     public $picture_url;
-    /*public $events= [];
-     
+    private $events=[];
+    private $place;
+    
     public function __construct() // при создании компании создается массив событий этой компании
     {
-     $ob = new Event();
-     $this->events = $ob->getSome("company_id",$this->id);
+     $event = new Event();
+     $this->events = $event->getSome("company_id",$this->id);
+     
+     $place = new Place();
+     $this->place = $place->getPlace($this->place_id);
+        
     }
-    */
+
+    public function getEvents() // отбирает для главной странички 6 новостей по дате 
+    {
+        return $this->events;
+    }
+    public function getPlace() // отбирает для главной странички 6 новостей по дате 
+    {
+        return $this->place;
+    }
+        
     public static function getMain() // отбирает для главной странички 6 новостей по дате 
     {
         $db = new DB;   // Создаем объект нужного сласса

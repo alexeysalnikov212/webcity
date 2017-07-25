@@ -7,8 +7,7 @@
 */
     class AController
     {
-        
-        public function actionAll() // берет из базы все организации/события и записывает их в массив объектов item 
+        public function actionAll() // берет из базы все записи и записывает их в массив объектов item 
             // и вызывает view для показа
         {
             $ob = new static::$class; //создаем объект дочернего класса
@@ -84,4 +83,4 @@
             include __DIR__."/../views/one".static::$class.".php";
         }
     }
-?> 
+?>

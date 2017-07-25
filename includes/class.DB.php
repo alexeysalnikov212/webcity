@@ -184,6 +184,7 @@ class DB
     }
      public function queryOne($query, $class = "stdClass",$parameters=[]) //выбирает из таблицы одну строку
     {
-        return $this->queryAll($query,$class)[0];
+       if ($this->queryAll($query,$class)!=NULL)
+       {return $this->queryAll($query,$class)[0];}
     }
    }
