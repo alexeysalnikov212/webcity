@@ -19,6 +19,11 @@
             $ob = new static::$class; 
             $id = $_GET['id'];
             $item = $ob::getOne($id);
+            
+            if($item->getPrivate()!=NULL)
+            {
+                $private=$item->getPrivate();
+            }
             include __DIR__."/../views/one".static::$class.".php";
         }
         

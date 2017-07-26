@@ -14,7 +14,9 @@
                             <li><p><span class="glyphicon glyphicon glyphicon-calendar one" name = "date-start" style="width:50px;"></span><?= $item->date_start; ?></p></li>
                             <li><p><span class="glyphicon glyphicon glyphicon-calendar one" name = "date-end" style="width:50px;"></span><?= $item->date_end; ?></p></li>
                             <li><p><span class="glyphicon glyphicon glyphicon-pushpin one" name = "category" style="width:50px;"></span><?= $item->category_id; ?></p></li>
-                            <li><p><span class="glyphicon glyphicon-map-marker one" name = "place" style="width:50px;"></span>ул. Парковая, 40</p></li>
+                            <li><p><span class="glyphicon glyphicon-map-marker one" name = "place" style="width:50px;"></span>
+                                <?= $private['place']->city.", ".$private['place']->street.", ".$private['place']->house; ?> 
+                                </p></li>
                             <li><p><span class="glyphicon glyphicon glyphicon-user one" name = "company" style="width:50px;"></span><a href="index.php?ctrl=company&act=one&id=<?= $item->company_id; ?>"><?= $item->company_id; ?></a></p>
                           </ul>
                       </div>

@@ -20,21 +20,14 @@ class Event extends AbstractModel
     public function __construct() // при создании компании создается массив событий этой компании
     {
     //возможно, нужно сделать новый класс Pictures
-     $db = new DB;
-     $this->pictures = $db->queryOne("SELECT * FROM pictures WHERE event_id = {$this->id}");
-     
-     $places = new Place();
-     $this->place = $places->getPlace($this->place_id);
-        
+     $this->place = Place::getPlace($this->place_id);
+     $this->pictures = Picture::getPicture($this->id);
     }
 
-    public function getPictures() // отбирает для главной странички 6 новостей по дате 
+    public function getPrivate() // отбирает для главной странички 6 новостей по дате 
     {
-        return $this->events;
-    }
-    public function getPlace() // отбирает для главной странички 6 новостей по дате 
-    {
-        return $this->place;
+        $private=array('place' => $this->place, 'pictures' => $this->pictures);
+        return $private;
     }
 //это надо будет переделать в абстракнтый класс
 //изменить Ордер БАй с price на date

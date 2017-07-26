@@ -11,9 +11,16 @@
                           </div>
                             <hr>
                           <ul class="container details">
-                            <li><p><span class="glyphicon glyphicon-earphone one" name = "tel" style="width:50px;"></span>+91 90000 00000</p></li>
+                            <li><p><span class="glyphicon glyphicon-earphone one" name = "tel" style="width:50px;"></span>
+                                <?php 
+                                foreach($private['telephones'] as $telephone)
+                                {
+                                 echo($telephone->telephone);   
+                                }
+                                ?>
+                                </p></li>
                             <li><p><span class="glyphicon glyphicon-envelope one" name = "mail" style="width:50px;"></span><?= $item->email; ?></p></li>
-                            <li><p><span class="glyphicon glyphicon-map-marker one" name = "address" style="width:50px;"></span>Hyderabad</p></li>
+                            <li><p><span class="glyphicon glyphicon-map-marker one" name = "address" style="width:50px;"></span><?= $private['place']->city.", ".$private['place']->street.", ".$private['place']->house; ?> </p></li>
                             <li><p><span class="glyphicon glyphicon-new-window one" name = "www" style="width:50px;"></span><a href="#"><?= $item->www; ?></a></p>
                           </ul>
                       </div>
@@ -36,7 +43,7 @@
       <div class="container-fluid ">
     <div class="content">
       <div class="row">
-        <?php $events=$item->getEvents();
+        <?php $events=$private['events'];
     foreach($events as $itemx):?>
           
        <div class="col-xs-6 col-sm-4 col-md-3">
