@@ -29,5 +29,3 @@
             //redirect("index.php");
         }
     }
-
-?>

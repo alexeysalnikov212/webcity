@@ -45,4 +45,3 @@ public function getMain() // отбирает для главной страни
             return $db->queryAll($q, "Event"); //возвращаем массив объектов
     }
 }
-?>

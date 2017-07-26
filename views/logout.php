@@ -8,5 +8,3 @@
 
     // redirect user
     redirect("/");
-
-?>

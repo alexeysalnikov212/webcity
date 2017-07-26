@@ -10,4 +10,3 @@ class EventController extends AController
         protected static $class = "User";
         
     }
-?> 

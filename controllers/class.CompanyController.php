@@ -9,4 +9,3 @@
     {
         protected static $class ="Company";
     }
-?> 

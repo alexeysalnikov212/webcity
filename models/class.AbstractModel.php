@@ -34,4 +34,3 @@ abstract class AbstractModel
         return $db->query1($q);
     }
 }
-?>

@@ -9,4 +9,3 @@
             include __DIR__."/../views/Register.php"; // подключаем вьюшку
         }
     }
-?> 

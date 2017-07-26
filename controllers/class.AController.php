@@ -83,4 +83,3 @@
             include __DIR__."/../views/one".static::$class.".php";
         }
     }
-?>

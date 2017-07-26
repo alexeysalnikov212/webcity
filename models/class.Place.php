@@ -21,4 +21,3 @@ class Place
         return $db->queryOne("SELECT * FROM ".self::$table." WHERE place_id = {$place_id}", self::$class);
     }    
 }
-?>

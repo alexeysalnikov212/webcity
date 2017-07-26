@@ -12,4 +12,3 @@ class User extends AbstractModel
     public $email;
     public $picture_url;
 }
-?>

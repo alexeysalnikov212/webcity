@@ -13,4 +13,3 @@
     else if (file_exists(__DIR__."/../classes/class.".$class.".php"))
     {require_once __DIR__."/../classes/class.".$class.".php";}
 }
-?>
