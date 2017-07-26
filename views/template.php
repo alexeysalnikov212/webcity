@@ -8,12 +8,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>MyDay</title>
+    <?php if (isset($title)): ?>
+        <title>MyDay: <?= htmlspecialchars($title) ?></title>
+    <?php else: ?>
+        <title>MyDay</title>
+    <?php endif ?>
 
   <!-- Bootstrap -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/colorbox.css" rel="stylesheet">
-
+ <!--Календарь!-->
   <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
   <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -21,7 +25,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
- 
+
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -34,18 +38,11 @@
 <body>
 <div id="container-fluid">
 	<?php include ("blocks/navbar.php");?>
-  <?php include ("blocks/events.php");?>
-  <?php include ("blocks/carousel.php");?>
+  <?php include 'blocks/'.$content_view;?>
   <?php include ("blocks/footer.php");?>
 
 </div>
-           
-         
-     <script> $('#media').carousel({
-    pause: true,
-    interval: false,
-    });
-    </script> 
+
           <script>
               $('#datetimepicker').datetimepicker({ pickTime: false, language: 'ru', defaultDate: new Date() }
               );

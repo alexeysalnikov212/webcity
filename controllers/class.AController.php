@@ -12,14 +12,37 @@
         {
             $ob = new static::$class; //создаем объект дочернего класса
             $items = $ob::getAll(); // вызываем метод этого объкта
-            include __DIR__."/../views/all".static::$class.".php"; // подключаем вьюшку
+
+            $view = "events";
+            $title = "Все события";
+            if(static::$class === "Company") {
+                $view = "companies";
+                $title = "Все компании";
+            }
+
+            $values = [
+                $view => $items,
+                "title" => $title,
+            ];
+            render("template.php", $view.'.php',$values);
         }
         public function actionOne() // показывает одно событие/организацию по id работает аналогично actionAll
         {
             $ob = new static::$class; 
-            $id = $_GET['id'];
+            $id = $_GET['id']; //TODO:проверка если нету id
             $item = $ob::getOne($id);
-            include __DIR__."/../views/one".static::$class.".php";
+
+            $view = "event";
+            $title = "Событие";
+            if(static::$class === "Company") {
+                $view = "company";
+                $title = "Компания";
+            }
+            $values = [
+                $view => $item,
+                "title" => $title,
+            ];
+            render("template.php", $view.'.php',$values);
         }
         
         public function actionSome() //отбирает и показывает события/организации по определенному критерию 
@@ -27,8 +50,20 @@
             $ob = new static::$class;
             $key = $_GET['key'];        //получаем данные из строки
             $value = $_GET['value'];
-            $items = $ob::getSome($key,$value);     
-            include __DIR__."/../views/all".static::$class.".php";
+            $items = $ob::getSome($key,$value);
+
+            $view = "events";
+            $title = "События";
+            if(static::$class === "Company") {
+                $view = "companies";
+                $title = "Компании";
+            }
+
+            $values = [
+                $view => $items,
+                "title" => $title,
+            ];
+            render("template.php", $view.'.php',$values);
         }
         
         public function actionCreate() //создает новую строку в базе

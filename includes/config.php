@@ -13,10 +13,6 @@
     // requirements
     require("helpers.php");
 
-    // WC Library
-    require("class.DB.php");
-    
-
     // enable sessions
     session_start();
 

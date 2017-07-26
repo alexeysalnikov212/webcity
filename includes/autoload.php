@@ -10,6 +10,6 @@
     else if (file_exists(__DIR__."/../controllers/class.".$class.".php"))
     {require_once __DIR__."/../controllers/class.".$class.".php";}
     
-    else if (file_exists(__DIR__."/../classes/class.".$class.".php"))
-    {require_once __DIR__."/../classes/class.".$class.".php";}
+    else if (file_exists(__DIR__."/../views/class.".$class.".php"))
+    {require_once __DIR__."/../views/class.".$class.".php";}
 }

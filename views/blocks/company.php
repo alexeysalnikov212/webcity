@@ -1,4 +1,7 @@
-<div id = "company">    
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+<script src="http://bootstraptema.ru/snippets/element/2016/maps/custom.js"></script>
+
+<div id = "company">
        <div class="container card-company">    
                 <div class="jumbotron">
                   <div class="row">
@@ -7,14 +10,14 @@
                       </div>
                       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                           <div class="container" name = "name">
-                            <h2><?= $item->fullname; ?></h2>
+                            <h2><?= $values["company"]->fullname; ?></h2>
                           </div>
                             <hr>
                           <ul class="container details">
                             <li><p><span class="glyphicon glyphicon-earphone one" name = "tel" style="width:50px;"></span>+91 90000 00000</p></li>
-                            <li><p><span class="glyphicon glyphicon-envelope one" name = "mail" style="width:50px;"></span><?= $item->email; ?></p></li>
+                            <li><p><span class="glyphicon glyphicon-envelope one" name = "mail" style="width:50px;"></span><?= $values["company"]->email; ?></p></li>
                             <li><p><span class="glyphicon glyphicon-map-marker one" name = "address" style="width:50px;"></span>Hyderabad</p></li>
-                            <li><p><span class="glyphicon glyphicon-new-window one" name = "www" style="width:50px;"></span><a href="#"><?= $item->www; ?></a></p>
+                            <li><p><span class="glyphicon glyphicon-new-window one" name = "www" style="width:50px;"></span><a href="#"><?= $values["company"]->www; ?></a></p>
                           </ul>
                       </div>
                   </div>
@@ -23,7 +26,7 @@
                         <div class="col-md-6">
                             <h2 class="text-center">О компании</h2>
                             <div class="container-about" name = "description">
-                            <p><?= $item->description; ?></p>
+                            <p><?= $values["company"]->description; ?></p>
                              </div> 
                              </div>                                       
                         <div class="col-md-6">
@@ -36,7 +39,7 @@
       <div class="container-fluid ">
     <div class="content">
       <div class="row">
-        <?php $events=$item->getEvents();
+        <?php $events=$values["company"]->getEvents();
     foreach($events as $itemx):?>
           
        <div class="col-xs-6 col-sm-4 col-md-3">
@@ -88,3 +91,4 @@
 </div>
 
 </div>
+

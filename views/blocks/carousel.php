@@ -1,3 +1,11 @@
+<script>$(document).ready(function () {
+        $('#media').carousel({
+            pause: true,
+            interval: 100,
+        });
+    });
+</script>
+
 <div class="container">
   <div class="row">
     <a href="?ctrl=company&act=all" style="text-align:center;border-bottom:solid 1px #eee;color:blue;"><h2> Организации Краматорска </h2> </a>
@@ -13,7 +21,7 @@
                
                 <?php
                 $rowcount=0;
-    foreach($companies as $itemx):
+    foreach($values["companies"] as $itemx):
         if ($rowcount%3==0 and $rowcount!=0)
                 { ?>
                 </div> 

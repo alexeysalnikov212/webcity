@@ -1,15 +1,16 @@
 <!-- Contents events -->
 
  <div id="events">
- <div class="main-text-body">
-    <h2>Самые интересные места отдыха в Краматорске ждут вас!</h2>
+   <div class="main-text-body">
+    <h2>Все события в Краматорске!</h2>
   </div>
   <div class="container-fluid ">
     <div class="content">
-     <div lass="row">
-        <?php
-    foreach($events as $itemx):?>
-            
+      <div class="row">
+          
+          <?php
+    foreach($values["events"] as $itemx):?>
+          
         <div class="col-xs-6 col-sm-4 col-md-3">
           <div class="thumbnail">
             <div class="caption">
@@ -23,14 +24,34 @@
                 <h3><?= $itemx->date_start; ?></h3>
               </div>
               <p><a href="?ctrl=event&act=one&id=<?= $itemx->id; ?>" class="label label-default">Узнать больше</a></p>
-
             </div>
             <div class="event-picture">
               <div class="event-picture-wrap" style="background-image: url(img/Velosipedisty.jpg);"><img src="img/Velosipedisty.jpg" alt="" title=""></div>
               </div>
           </div>
         </div>
-<?php endforeach ?>
-       <a href="index.php?ctrl=event&act=all" style="color:white;"><button type="button" class="btn btn-succ btn-lg btn-block">
-        Посмотреть все события в Краматорске</button></a>
-      </div>
+<?php endforeach
+          
+          ?>
+          </div>
+  <div class="container"> 
+    <nav aria-label="pagination">
+    <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">5</a></li>
+    <li class="page-item"><a class="page-link" href="#">6</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+</div>
+        </div>
+       </div>
+       </div> 
