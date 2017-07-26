@@ -9,4 +9,9 @@ class EventController extends AController
     {
         protected static $class = "Event";
         
+        protected static $view ="event";
+        protected static $views ="events";
+        
+        protected static $title ="Событие";
+        protected static $titles ="Все события";
     }

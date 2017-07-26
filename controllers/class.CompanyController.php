@@ -8,4 +8,10 @@
     class CompanyController extends AController
     {
         protected static $class ="Company";
+       
+        protected static $view ="company";
+        protected static $views ="companies";
+        
+        protected static $title ="Компания";
+        protected static $titles ="Все компании";
     }

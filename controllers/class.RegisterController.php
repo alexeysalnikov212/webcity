@@ -1,11 +1,15 @@
 <?php
-/*
-	класс контроллер для регистрации
-*/
-    class RegisterController
+/**
+ * Класс контроллер для регистрации
+ */
+
+class RegisterController extends Controller
+{
+    /**
+     *  Действие по умолчанию
+     */
+    public function actionIndex()
     {
-        public function actionindex()
-        {            
-            include __DIR__."/../views/Register.php"; // подключаем вьюшку
-        }
+        render("template.php", "register.php", ["title" => "Регистрация"]);
     }
+}

@@ -9,7 +9,7 @@
 <div class="container">
   
     <?php
-    foreach($items as $itemx):?>
+    foreach($values["companies"] as $itemx):?>
     
     <div class="well">
       <div class="media">

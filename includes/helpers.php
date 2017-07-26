@@ -65,27 +65,30 @@
         exit;
     }
 
-    /**
-     * Renders view, passing in values.
-     */
-    function render($view, $values = [])
+
+/**
+ *
+ * Рендерит вид.
+ * @param $template_view - базовый шаблон в котором подключается $content_view
+ * @param $content_view - подключаемая форма к шаблону
+ * @param array $values - передаваемые значения
+ */
+function render($template_view, $content_view, $values = [])
+{
+    // if view exists, render it
+    if (file_exists("../views/{$template_view}"))
     {
-        // if view exists, render it
-        if (file_exists("../views/{$view}"))
-        {
-            // extract variables into local scope
-            extract($values);
+        // extract variables into local scope
+        extract($values);
 
-            // render view (between header and footer)
-            require("../views/blocks/header.php");
-            require("../views/{$view}");
-            require("../views/blocks/footer.php");
-            exit;
-        }
-
-        // else err
-        else
-        {
-            trigger_error("Invalid view: {$view}", E_USER_ERROR);
-        }
+        // render view
+        require("../views/{$template_view}");
+        exit;
     }
+
+    // else err
+    else
+    {
+        trigger_error("Invalid view: {$template_view}", E_USER_ERROR);
+    }
+}
