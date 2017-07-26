@@ -36,9 +36,9 @@
 </head>
 <body>
 <div id="container-fluid">
-	<?php include ("/blocks/navbar.php");?>
-  <?php include ("/blocks/event.php");?>
-  <?php include ("/blocks/footer.php");?>
+	<?php include ("blocks/navbar.php");?>
+  <?php include ("blocks/event.php");?>
+  <?php include ("blocks/footer.php");?>
 </div>
            
             <script> $('#media').carousel({

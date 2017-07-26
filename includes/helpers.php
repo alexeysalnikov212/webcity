@@ -77,9 +77,9 @@
             extract($values);
 
             // render view (between header and footer)
-            require("../views/header.php");
+            require("../views/blocks/header.php");
             require("../views/{$view}");
-            require("../views/footer.php");
+            require("../views/blocks/footer.php");
             exit;
         }
 
