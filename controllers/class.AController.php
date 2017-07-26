@@ -10,15 +10,11 @@
         public function actionAll() // берет из базы все записи и записывает их в массив объектов item 
             // и вызывает view для показа
         {
-            $ob = new static::$class; //создаем объект дочернего класса
+            $ob = static::$class; //создаем объект дочернего класса
             $items = $ob::getAll(); // вызываем метод этого объкта
 
-            $view = "events";
-            $title = "Все события";
-            if(static::$class === "Company") {
-                $view = "companies";
-                $title = "Все компании";
-            }
+            $view = static::$views;
+            $title = static::$titles;
 
             $values = [
                 $view => $items,
@@ -32,13 +28,10 @@
             $id = $_GET['id']; //TODO:проверка если нету id
             $item = $ob::getOne($id);
 
-            $view = "event";
-            $title = "Событие";
-            if(static::$class === "Company") {
-                $view = "company";
-                $title = "Компания";
-            }
-            $values = [
+           $view = static::$view;
+            $title = static::$title;
+
+        $values = [
                 $view => $item,
                 "title" => $title,
             ];
@@ -52,12 +45,8 @@
             $value = $_GET['value'];
             $items = $ob::getSome($key,$value);
 
-            $view = "events";
-            $title = "События";
-            if(static::$class === "Company") {
-                $view = "companies";
-                $title = "Компании";
-            }
+            $view = static::$views;
+            $title = static::$titles;
 
             $values = [
                 $view => $items,

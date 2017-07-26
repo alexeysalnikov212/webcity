@@ -23,12 +23,8 @@ class MainPageController extends Controller
     public function actionIndex() // берет из баз данные для показа главной странички
         //и передает их вьюшке Main
     {
-        $obEvent = new Event; //создаем объект
-        $obCompany = new Company;
-
-
-        $events = $obEvent->getMain(); // вызываем метод этого объкта
-        $companies = $obCompany->getMain();//и записываем данные в переменные
+        $events = Event::getMain(); // вызываем метод этого объкта
+        $companies = Company::getMain();//и записываем данные в переменные
 
         $values = [
             "events" => $events,
