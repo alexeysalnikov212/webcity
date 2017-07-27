@@ -7,6 +7,15 @@
 */
     class AController
     {
+
+        /**
+         * Действие по умолчанию
+         */
+        public function actionIndex()
+        {
+            $this->actionAll();
+        }
+
         public function actionAll() // берет из базы все записи и записывает их в массив объектов item 
             // и вызывает view для показа
         {
