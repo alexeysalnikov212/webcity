@@ -14,12 +14,10 @@
                           </div>
                             <hr>
                           <ul class="container details">
-==== BASE ====
                             <li><p><span class="glyphicon glyphicon-earphone one" name = "tel" style="width:50px;"></span>+91 90000 00000</p></li>
                             <li><p><span class="glyphicon glyphicon-envelope one" name = "mail" style="width:50px;"></span><?= $values["company"]->email; ?></p></li>
-                            <li><p><span class="glyphicon glyphicon-map-marker one" name = "address" style="width:50px;"></span><?= $values["company"]['place']->city.", ".$values["company"]['place']->street.", ".$values["company"]['place']->house; ?> </p></li>
+                            <li><p><span class="glyphicon glyphicon-map-marker one" name = "address" style="width:50px;"></span><?= $values["private"]['place']->city.", ".$values["private"]['place']->street.", ".$values["private"]['place']->house; ?> </p></li>
                             <li><p><span class="glyphicon glyphicon-new-window one" name = "www" style="width:50px;"></span><a href="#"><?= $values["company"]->www; ?></a></p>
-==== BASE ====
                           </ul>
                       </div>
                   </div>

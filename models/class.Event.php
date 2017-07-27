@@ -31,7 +31,7 @@ class Event extends AbstractModel
     }
 //это надо будет переделать в абстракнтый класс
 //изменить Ордер БАй с price на date
-public function getMain() // отбирает для главной странички 6 новостей по дате 
+public static function getMain() // отбирает для главной странички 6 новостей по дате
     {
         $db = new DB;   // Создаем объект нужного сласса
         $q="SELECT * FROM events ORDER BY date_start LIMIT 6"; //формируем запрос 
