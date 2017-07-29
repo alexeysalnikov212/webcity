@@ -161,19 +161,20 @@ class DB
             }
         }
     
-    /* public function query($query,$parameters=[])  // выбирает из таблицы все записи
+     public function queryq($query,$parameters=[])  // выбирает из таблицы все записи
     {
         $handle = $this->link->prepare($query);             //подготовка запроса
         $x= $handle->execute($parameters);                     //выполнение запроса
         //var_dump($handle->errorInfo());  // передача данных в форме объектов
         return $x;
-    } */
+    } 
 
      public function query1($query,$parameters=[])  // для создания
     {
         $handle = $this->link->prepare($query);             //подготовка запроса
         $handle->execute($parameters);                     //выполнение запроса
-        return $this->link->lastInsertId();
+        //var_dump($handle->errorInfo());
+         return $this->link->lastInsertId();
           // передача данных в форме объектов
     } 
     public function queryAll($query,$class="stdClass",$parameters=[])  // выбирает из таблицы все записи

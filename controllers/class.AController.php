@@ -44,9 +44,6 @@
                 $view => $item,
                 "title" => $title,
             ];
-
-
-
             render("template.php", $view.'.php',$values);
         }
         
@@ -83,7 +80,7 @@
             }
             endforeach;
             
-            if(!$ob->check())
+            if(!$ob->check(1)) // 1 = +проверка на уникальность
              {
                  echo ("Не указаны обязательные поля или такое уже существует");
              }
@@ -107,36 +104,60 @@
             
         }
         
-        
-// В РАЗРАБОТКЕ        
+                
         public function actionDelete() // удаляет запись
         {
             $ob = new static::$class; 
-            $id = $_GET['id'];
-            $item = $ob::deleteOne($id);
-            include __DIR__."/../views/one".static::$class.".php";
-        }
+            $id = $_GET['id']; //TODO:проверка если нету id
+            if($ob::delete($id))
+            {echo "Удалено";}
+            else
+            {echo "Не удалено, что-то пошло  не так";}
+            //render("template.php", 'delete.php');
+                }
 
-// В РАЗРАБОТКЕ
+    
         public function actionChange() //изменяет строку в базе 
         {
             $ob = new static::$class;
-            $keys= array_keys(get_class_vars(static::$class)); // получаем массив значений свойств объекта 
-                                                    //(name,description,и т.д.)
-            $values=[];                             //создаем массив значений, куда передадим все из $_POST
-            foreach ($keys as $key)                 //заполняем данные объекта
+            $keys=[];
+            foreach ($_POST as $key=>$value):
             {
-                if (isset($_GET[$key]))
+                $ob->$key=$value;
+                if($ob->$key!=NULL)
                 {
-                    $ob->$key=$_GET[$key];
-                    $values[] = $_GET[$key];
+                    $keys[]=$key;
                 }
-                else $values[]=NULL;
-             //  $array[] = $key->$_GET[$key];
             }
-           // var_dump($ob);
-            $item = $ob->create($keys,$values);
+            endforeach;
             
-            include __DIR__."/../views/one".static::$class.".php";
-        }
-    }
+            if(!$ob->check()) //
+             {
+                 echo ("Не указаны обязательные поля или такое уже существует");
+             }
+                    
+            else
+            {
+            
+            if(!$ob->change($keys,$ob))//вызываем функцию криэйт
+            {
+                echo ("не изменилось");
+            }
+            else{
+                $item = $ob::getOne($ob->id);           //получаем созданную запись
+            
+            $view = static::$view;
+            $title = static::$title;
+
+            $values = [
+                $view => $item,
+                "title" => $title,
+            ];
+
+            render("template.php", $view.'.php',$values);
+            }
+             }
+            
+        }    
+        
+}

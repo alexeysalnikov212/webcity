@@ -40,15 +40,18 @@ class User extends AbstractModel
         endforeach;    
     }
     
-    public function check() // отбирает для главной странички 6 новостей по дате 
+    public function check($unic=0) // отбирает для главной странички 6 новостей по дате 
     {
      $check=TRUE;
         
          //проверка на уникальность
+        
+        if($unic===1)
+        {
         $db = new DB;   // Создаем объект нужного сласса
          if($db->queryOne("SELECT * FROM users WHERE login = '{$this->login}'")!=NULL)
         {$check=FALSE;}
-
+        }
         //проверка на нотНуль 
           if($this->login===NULL or
             $this->hash===NULL or
