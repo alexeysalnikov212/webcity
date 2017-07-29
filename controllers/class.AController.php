@@ -36,20 +36,13 @@
             $ob = new static::$class; 
             $id = $_GET['id']; //TODO:проверка если нету id
             $item = $ob::getOne($id);
-
+            
            $view = static::$view;
             $title = static::$title;
-
-            $private = null;
-            if($item->getPrivate()!=NULL)
-            {
-                $private=$item->getPrivate();
-            }
 
             $values = [
                 $view => $item,
                 "title" => $title,
-                "private" => $private,
             ];
 
 

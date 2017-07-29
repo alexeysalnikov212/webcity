@@ -16,7 +16,7 @@
 
       	<a href="?ctrl=company&act=one&id=<?= $itemx->id; ?>" class="pull-left">
 
-    		<img class="picture-media" src="http://placekitten.com/150/150">
+    		<img class="picture-media" src="/../upload/<?= $itemx->picture_url; ?>.jpg">
   		</a>
   		    <div class="company-name">
             
