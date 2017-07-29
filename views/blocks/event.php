@@ -1,4 +1,7 @@
-<div id = "event">    
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+<script src="http://bootstraptema.ru/snippets/element/2016/maps/custom.js"></script>
+
+<div id = "event">
        <div class="container event">
                <div class="jumbotron">
                   <div class="row">
@@ -7,15 +10,17 @@
                       </div>
                       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                           <div class="container" name = "title">
-                            <h2>Концерт группы "Название"</h2>
+                            <h2><?= $values["event"]->title; ?></h2>
                           </div>
                             <hr>
                           <ul class="container details">
-                            <li><p><span class="glyphicon glyphicon glyphicon-calendar one" name = "date-start" style="width:50px;"></span>25.07.2017</p></li>
-                            <li><p><span class="glyphicon glyphicon glyphicon-calendar one" name = "date-end" style="width:50px;"></span>25.07.2017</p></li>
-                            <li><p><span class="glyphicon glyphicon glyphicon-pushpin one" name = "category" style="width:50px;"></span>Концерты</p></li>
-                            <li><p><span class="glyphicon glyphicon-map-marker one" name = "place" style="width:50px;"></span>ул. Парковая, 40</p></li>
-                            <li><p><span class="glyphicon glyphicon glyphicon-user one" name = "company" style="width:50px;"></span><a href="index.php?ctrl=company&act=one&id=1">Арт-кафе "Фиеста"</a></p>
+                            <li><p><span class="glyphicon glyphicon glyphicon-calendar one" name = "date-start" style="width:50px;"></span><?= $values["event"]->date_start; ?></p></li>
+                            <li><p><span class="glyphicon glyphicon glyphicon-calendar one" name = "date-end" style="width:50px;"></span><?= $values["event"]->date_end; ?></p></li>
+                            <li><p><span class="glyphicon glyphicon glyphicon-pushpin one" name = "category" style="width:50px;"></span><?= $values["event"]->category_id; ?></p></li>
+                            <li><p><span class="glyphicon glyphicon-map-marker one" name = "place" style="width:50px;"></span>
+                                <?= $values["private"]['place']->city.", ".$values["private"]['place']->street.", ".$values["private"]['place']->house; ?>
+                                </p></li>
+                            <li><p><span class="glyphicon glyphicon glyphicon-user one" name = "company" style="width:50px;"></span><a href="index.php?ctrl=company&act=one&id=<?= $values["event"]->company_id; ?>"><?= $values["event"]->company_id; ?></a></p>
                           </ul>
                       </div>
                   </div>
@@ -24,8 +29,7 @@
                             <div class="col-md-6">
                                <h2 class="text-center">О мероприятии</h2>
                                 <div class="container-about" name = "description">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                             </div>
+                            <p><?= $values["event"]->description; ?>                             </div>
                         </div>
           <div class="container-gallery"> 
                  <div class="col-md-6"> 

@@ -76,7 +76,7 @@
                           <h4 class="modal-title" id="myModalLabel">Авторизация на сайте</h4>
                          </div>
                          <div class="modal-body">
-                           <?php include("../views/login_form.php");?>
+                           <?php include("../views/blocks/login.php");?>
                          </div>
                          <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>

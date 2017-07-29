@@ -15,8 +15,13 @@ abstract class AbstractModel
     public static function getOne($id) // выводит одно, работает аналогично getAll
     {
         $db = new DB;
-        return $db->queryOne("SELECT * FROM ".static::$table." WHERE id = {$id}", static::$class);
+         return $db->queryOne("SELECT * FROM ".static::$table." WHERE id = {$id}", static::$class);
+    }
+    public function getPrivate() // для переопределения, выводит приватные свойства 
+    {
+         return NULL; 
     }    
+        
     public static function getSome($key,$value) // отбирает по указанному критерию 
     {
         $db = new DB;
@@ -34,4 +39,3 @@ abstract class AbstractModel
         return $db->query1($q);
     }
 }
-?>

@@ -7,19 +7,54 @@
 */
     class AController
     {
-        public function actionAll() // берет из базы все организации/события и записывает их в массив объектов item 
+
+        /**
+         * Действие по умолчанию
+         */
+        public function actionIndex()
+        {
+            $this->actionAll();
+        }
+
+        public function actionAll() // берет из базы все записи и записывает их в массив объектов item 
             // и вызывает view для показа
         {
-            $ob = new static::$class; //создаем объект дочернего класса
+            $ob = static::$class; //создаем объект дочернего класса
             $items = $ob::getAll(); // вызываем метод этого объкта
-            include __DIR__."/../views/all".static::$class.".php"; // подключаем вьюшку
+
+            $view = static::$views;
+            $title = static::$titles;
+
+            $values = [
+                $view => $items,
+                "title" => $title,
+            ];
+            render("template.php", $view.'.php',$values);
         }
         public function actionOne() // показывает одно событие/организацию по id работает аналогично actionAll
         {
             $ob = new static::$class; 
-            $id = $_GET['id'];
+            $id = $_GET['id']; //TODO:проверка если нету id
             $item = $ob::getOne($id);
-            include __DIR__."/../views/one".static::$class.".php";
+
+           $view = static::$view;
+            $title = static::$title;
+
+            $private = null;
+            if($item->getPrivate()!=NULL)
+            {
+                $private=$item->getPrivate();
+            }
+
+            $values = [
+                $view => $item,
+                "title" => $title,
+                "private" => $private,
+            ];
+
+
+
+            render("template.php", $view.'.php',$values);
         }
         
         public function actionSome() //отбирает и показывает события/организации по определенному критерию 
@@ -27,8 +62,16 @@
             $ob = new static::$class;
             $key = $_GET['key'];        //получаем данные из строки
             $value = $_GET['value'];
-            $items = $ob::getSome($key,$value);     
-            include __DIR__."/../views/all".static::$class.".php";
+            $items = $ob::getSome($key,$value);
+
+            $view = static::$views;
+            $title = static::$titles;
+
+            $values = [
+                $view => $items,
+                "title" => $title,
+            ];
+            render("template.php", $view.'.php',$values);
         }
         
         public function actionCreate() //создает новую строку в базе
@@ -83,4 +126,3 @@
             include __DIR__."/../views/one".static::$class.".php";
         }
     }
-?> 
