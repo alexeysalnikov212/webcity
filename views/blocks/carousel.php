@@ -33,7 +33,7 @@
                 ?>
             <div class="col-md-4">
                 <div class="company-picture">
-                    <a class="thumbnail-com" href="?ctrl=company&act=one&id=<?= $itemx->id; ?>"><img class="img-responsive img-circle" alt="" src="img/Velosipedisty.jpg" ></a>
+                    <a class="thumbnail-com" href="?ctrl=company&act=one&id=<?= $itemx->id; ?>"><img class="img-responsive img-circle" alt="" src="/../upload/<?= $itemx->picture_url ?>.jpg" ></a>
                     </div> 
                     <div class="company-fullname">
                         <h2><?= $itemx->fullname; ?></h2>

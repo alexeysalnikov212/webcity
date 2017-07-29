@@ -7,29 +7,37 @@ class Company extends AbstractModel
     protected static $class = "Company";//для связи с базой из абстрактной модели
     
     //свойства
-   public $id;
-    public $fullname;
-    public $description;
-    public $place_id;
-    public $email;
-    public $www;
-    public $picture_url;
+    private $id;
+    private $fullname;
+    private $description;
+    private $place_id;
+    private $email;
+    private $www;
+    private $picture_url;
     
     private $events=[];
     private $place;
     private $telephones=[];
     
-    public function __construct() // при создании компании создается массив событий этой компании
+    public function __construct() // при создании компании создается массив событий этой компании, массив места и массив телефонов
     {
      $this->events = Event::getSome("company_id",$this->id);
      $this->place = Place::getPlace($this->place_id);
      $this->telephones = Telephone::getTelephone($this->id);    
     }
 
-    public function getPrivate() // отбирает для главной странички 6 новостей по дате 
+    public function __get($property) // отбирает для главной странички 6 новостей по дате 
     {
-        $private=array('events' => $this->events, 'place' => $this->place, 'telephones'=>$this->telephones);
-        return $private;
+        $keys= array_keys(get_class_vars('Company'));
+        foreach ($keys as $key):
+            {
+                switch ($property)
+                {
+                case $key:
+                return $this->$key;
+                }
+            }
+        endforeach;    
     }
         
     public static function getMain() // отбирает для главной странички 6 новостей по дате 

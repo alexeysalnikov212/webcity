@@ -6,7 +6,7 @@
                 <div class="jumbotron">
                   <div class="row">
                       <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                          <img src="img/page3-img9.jpg" alt="stack photo" class="img-card">
+                          <img src="/../upload/<?=$values["company"]->picture_url;?>.jpg" alt="/../upload/<?= $values["company"]->picture_url; ?>.jpg" class="img-card">
                       </div>
                       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                           <div class="container" name = "name">
@@ -16,7 +16,7 @@
                           <ul class="container details">
                             <li><p><span class="glyphicon glyphicon-earphone one" name = "tel" style="width:50px;"></span>+91 90000 00000</p></li>
                             <li><p><span class="glyphicon glyphicon-envelope one" name = "mail" style="width:50px;"></span><?= $values["company"]->email; ?></p></li>
-                            <li><p><span class="glyphicon glyphicon-map-marker one" name = "address" style="width:50px;"></span><?= $values["private"]['place']->city.", ".$values["private"]['place']->street.", ".$values["private"]['place']->house; ?> </p></li>
+                            <li><p><span class="glyphicon glyphicon-map-marker one" name = "address" style="width:50px;"></span><?= $values["company"]->place->city.", ".$values["company"]->place->street.", ".$values["company"]->place->house; ?> </p></li>
                             <li><p><span class="glyphicon glyphicon-new-window one" name = "www" style="width:50px;"></span><a href="#"><?= $values["company"]->www; ?></a></p>
                           </ul>
                       </div>
@@ -39,7 +39,7 @@
       <div class="container-fluid ">
     <div class="content">
       <div class="row">
-        <?php $events=$values["private"]["events"];
+        <?php $events=$values["company"]->events;
     foreach($events as $itemx):?>
           
        <div class="col-xs-6 col-sm-4 col-md-3">
@@ -58,7 +58,7 @@
 
             </div>
             <div class="event-picture">
-              <div class="event-picture-wrap" style="background-image: url(img/Velosipedisty.jpg);"><img src="img/Velosipedisty.jpg" alt="" title=""></div>
+              <div class="event-picture-wrap" style="background-image: url('/../upload/<?= $itemx->pictures[0]->picture_url ?>');"><img src='/../upload/<?= $itemx->pictures[0]->picture_url ?>' alt="" title=""></div>
               </div>
           </div>
         </div>

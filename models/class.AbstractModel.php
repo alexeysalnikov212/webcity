@@ -17,11 +17,8 @@ abstract class AbstractModel
         $db = new DB;
          return $db->queryOne("SELECT * FROM ".static::$table." WHERE id = {$id}", static::$class);
     }
-    public function getPrivate() // для переопределения, выводит приватные свойства 
-    {
-         return NULL; 
-    }    
-        
+    
+    
     public static function getSome($key,$value) // отбирает по указанному критерию 
     {
         $db = new DB;
@@ -33,7 +30,7 @@ abstract class AbstractModel
     public static function create($keys,$values) // отбирает по указанному критерию 
     {
         $db = new DB;
-       $ikeys = implode(", ",$keys);
+        $ikeys = implode(", ",$keys);
         $ivalues = implode("', '",$values);
         $q="INSERT INTO `".static::$table. "` ({$ikeys}) VALUES ('{$ivalues}')";
         return $db->query1($q);

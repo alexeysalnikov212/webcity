@@ -6,14 +6,14 @@ class Event extends AbstractModel
     protected static $class = "Event"; //для связи с базой из абстрактной модели
         
     //свойства
-    public $id;
-    public $title;
-    public $description;
-    public $category_id;
-    public $date_start;
-    public $date_end;
-    public $place_id;
-    public $company_id;
+    private $id;
+    private $title;
+    private $description;
+    private $category_id;
+    private $date_start;
+    private $date_end;
+    private $place_id;
+    private $company_id;
     private $pictures=[];    
     private $place;
     
@@ -24,17 +24,35 @@ class Event extends AbstractModel
      $this->pictures = Picture::getPicture($this->id);
     }
 
-    public function getPrivate() // отбирает для главной странички 6 новостей по дате 
+    public function __get($property) // отбирает для главной странички 6 новостей по дате 
     {
-        $private=array('place' => $this->place, 'pictures' => $this->pictures);
-        return $private;
+        $keys= array_keys(get_class_vars('Event'));
+        foreach ($keys as $key):
+            {
+                switch ($property)
+                {
+                case $key:
+                return $this->$key;
+                }
+            }
+        endforeach;    
+    }
+    
+    
+    public function getData() // отбирает для главной странички 6 новостей по дате 
+    {
+        $data=[
+            'place' => $this->place,
+            'pictures' => $this->pictures
+            ];
+        return $data;
     }
 //это надо будет переделать в абстракнтый класс
 //изменить Ордер БАй с price на date
 public static function getMain() // отбирает для главной странички 6 новостей по дате
     {
         $db = new DB;   // Создаем объект нужного сласса
-        $q="SELECT * FROM events ORDER BY date_start LIMIT 6"; //формируем запрос 
+        $q="SELECT * FROM events ORDER BY date_start LIMIT 8"; //формируем запрос 
             return $db->queryAll($q, "Event"); //возвращаем массив объектов
     }
 }

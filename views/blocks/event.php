@@ -6,7 +6,7 @@
                <div class="jumbotron">
                   <div class="row">
                       <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                          <img src="img/page3-img9.jpg" alt="stack photo" class="img-card">
+                          <img src="/../upload/<?= $values["event"]->pictures[0]->picture_url ?>" alt="stack photo" class="img-card">
                       </div>
                       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                           <div class="container" name = "title">
@@ -18,7 +18,7 @@
                             <li><p><span class="glyphicon glyphicon glyphicon-calendar one" name = "date-end" style="width:50px;"></span><?= $values["event"]->date_end; ?></p></li>
                             <li><p><span class="glyphicon glyphicon glyphicon-pushpin one" name = "category" style="width:50px;"></span><?= $values["event"]->category_id; ?></p></li>
                             <li><p><span class="glyphicon glyphicon-map-marker one" name = "place" style="width:50px;"></span>
-                                <?= $values["private"]['place']->city.", ".$values["private"]['place']->street.", ".$values["private"]['place']->house; ?>
+                                <?= $values["event"]->place->city.", ".$values["event"]->place->street.", ".$values["event"]->place->house; ?>
                                 </p></li>
                             <li><p><span class="glyphicon glyphicon glyphicon-user one" name = "company" style="width:50px;"></span><a href="index.php?ctrl=company&act=one&id=<?= $values["event"]->company_id; ?>"><?= $values["event"]->company_id; ?></a></p>
                           </ul>
@@ -38,34 +38,42 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner cont-slider">
-
-    <div class="item active">
-      <img alt="" title="" src="img/page3-img9.jpg">
+ 
+      <div class="item active">          
+     <img alt="" title="" src="/../upload/<?= $values["event"]->pictures[0]->picture_url; ?>">
     </div>
+      <?php 
+      foreach($values["event"]->pictures as $picture):
+      {?>
     <div class="item">
-      <img alt="" title="" src="img/page3-img4.jpg">
+      <img alt="" title="" src="/../upload/<?= $picture->picture_url; ?>"> 
     </div>
-    <div class="item">
-      <img alt="" title="" src="img/page3-img4.jpg">
-    </div>
-    <div class="item">
-      <img alt="" title="" src="img/page3-img4.jpg">
-    </div>
+    <?php 
+      }
+      endforeach;
+      ?>
+     
   </div>
   <!-- Indicators -->
-  <ol class="carousel-indicators">
+    
+                     
+    <ol class="carousel-indicators">
     <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
-      <img alt="" src="img/page3-img9.jpg">
+      <img alt="" src="upload/<?= $values["event"]->pictures[0]->picture_url ?>">
     </li>
-    <li class="" data-slide-to="1" data-target="#article-photo-carousel">
-      <img alt="" src="img/page3-img4.jpg">
+    
+    <?php 
+        $slideTo=1;
+      foreach($values["event"]->pictures as $picture):
+      {?>
+    <li class="" data-slide-to="<?= $slideTo ?>" data-target="#article-photo-carousel">
+      <img alt="" src="upload/<?= $picture->picture_url ?>">
     </li>
-    <li class="" data-slide-to="2" data-target="#article-photo-carousel">
-      <img alt="" src="img/page3-img4.jpg">
-    </li>
-    <li class="" data-slide-to="3" data-target="#article-photo-carousel">
-      <img alt="" src="img/page3-img4.jpg">
-    </li>
+    <?php 
+      }
+      endforeach;
+      ?>    
+    
   </ol>
 </div>
              </div> 
