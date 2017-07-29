@@ -26,7 +26,7 @@ class Company extends AbstractModel
      $this->telephones = Telephone::getTelephone($this->id);    
     }
 
-    public function __get($property) // отбирает для главной странички 6 новостей по дате 
+    public function __get($property) // получает свойства объекта 
     {
         $keys= array_keys(get_class_vars('Company'));
         foreach ($keys as $key):
@@ -39,7 +39,34 @@ class Company extends AbstractModel
             }
         endforeach;    
     }
+     
+    public function __set($property,$value) // устанавливает значения свойств объекта
+    {
+        $keys= array_keys(get_class_vars('Company'));
+        foreach ($keys as $key):
+            {
+                switch ($property)
+                {
+                case $key:
+                $this->$property = $value;
+                }
+            }
+        endforeach;    
+    }
+    
+    
+    public function check() // отбирает для главной странички 6 новостей по дате 
+    {
+        $check=TRUE;
+          
+        if($this->fullname===NULL or
+            $this->description===NULL or
+             $this->place_id===NULL)
+          {$check=FALSE;}
         
+            return $check;
+    }
+    
     public static function getMain() // отбирает для главной странички 6 новостей по дате 
     {
         $db = new DB;   // Создаем объект нужного сласса
