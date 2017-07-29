@@ -1,5 +1,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 <script src="http://bootstraptema.ru/snippets/element/2016/maps/custom.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACS3ox5WFRZn2y4xKy-PMm4JgcKsh1wRQ&callback=initMap"
+        type="text/javascript"></script>
 
 <div id = "event">
        <div class="container event">

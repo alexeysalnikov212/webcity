@@ -1,12 +1,13 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 <script src="http://bootstraptema.ru/snippets/element/2016/maps/custom.js"></script>
-
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACS3ox5WFRZn2y4xKy-PMm4JgcKsh1wRQ&callback=initMap"
+        type="text/javascript"></script>
 <div id = "company">
        <div class="container card-company">    
                 <div class="jumbotron">
                   <div class="row">
                       <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                          <img src="/../upload/<?=$values["company"]->picture_url;?>.jpg" alt="/../upload/<?= $values["company"]->picture_url; ?>.jpg" class="img-card">
+                          <img src="/../upload/<?=$values["company"]->picture_url;?>" alt="/../upload/<?= $values["company"]->picture_url; ?>" class="img-card">
                       </div>
                       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                           <div class="container" name = "name">
