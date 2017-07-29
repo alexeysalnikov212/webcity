@@ -12,21 +12,21 @@ class User extends AbstractModel
     private $email;
     private $picture_url;
 
- public function __get($property) // отбирает для главной странички 6 новостей по дате 
+    public function __get($property) // отбирает для главной странички 6 новостей по дате 
     {
         $keys= array_keys(get_class_vars('User'));
         foreach ($keys as $key):
             {
                 switch ($property)
                 {
-                case $key:
-                return $this->$key;
+                    case $key:
+                    return $this->$key;
                 }
             }
         endforeach;    
     }
     
-     public function __set($property,$value) // устанавливает значения свойств объекта
+    public function __set($property,$value) // устанавливает значения свойств объекта
     {
         $keys= array_keys(get_class_vars('User'));
         foreach ($keys as $key):
@@ -40,7 +40,7 @@ class User extends AbstractModel
         endforeach;    
     }
     
-     public function check() // отбирает для главной странички 6 новостей по дате 
+    public function check() // отбирает для главной странички 6 новостей по дате 
     {
      $check=TRUE;
         

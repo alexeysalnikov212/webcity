@@ -14,8 +14,14 @@ class UserController extends AController
     /**
      * Действие по умолчанию
      */
-    public function actionIndex()
+  /*  public function actionIndex()
     {
         render("template.php", "../404.php", ["title" => "Профиль"]);
     }
+    */
+    protected static $view ="user";
+        protected static $views ="users";
+        
+        protected static $title ="Профиль";
+        protected static $titles ="Пользователи";
 }

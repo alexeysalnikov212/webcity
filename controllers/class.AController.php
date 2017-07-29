@@ -92,8 +92,17 @@
             {
             $id = $ob->create($keys,$values);   //вызываем функцию криэйт
             $item = $ob::getOne($id);           //получаем созданную запись
-            echo ("Все хорошо, работайте над view для User");
-            //include __DIR__."/../views/one".static::$class.".php";
+            
+            $view = static::$view;
+            $title = static::$title;
+
+            $values = [
+                $view => $item,
+                "title" => $title,
+            ];
+
+            render("template.php", $view.'.php',$values);
+            
              }
             
         }
