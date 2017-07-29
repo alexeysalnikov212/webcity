@@ -136,14 +136,13 @@
                  echo ("Не указаны обязательные поля или такое уже существует");
              }
                     
-            else
-            {
-            
-            if(!$ob->change($keys,$ob))//вызываем функцию криэйт
+            else if(!$ob->change($keys,$ob))//вызываем функцию криэйт
             {
                 echo ("не изменилось");
             }
-            else{
+            
+            else
+            {
                 $item = $ob::getOne($ob->id);           //получаем созданную запись
             
             $view = static::$view;
@@ -156,8 +155,5 @@
 
             render("template.php", $view.'.php',$values);
             }
-             }
-            
-        }    
-        
+        }
 }
