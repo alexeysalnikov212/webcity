@@ -14,7 +14,6 @@ class Company extends AbstractModel
     private $email;
     private $www;
     private $picture_url;
-    
     private $events=[];
     private $place;
     private $telephones=[];
@@ -55,7 +54,7 @@ class Company extends AbstractModel
     }
     
     
-    public function check() // отбирает для главной странички 6 новостей по дате 
+    public function check() // проверка 
     {
         $check=TRUE;
           
@@ -67,11 +66,11 @@ class Company extends AbstractModel
             return $check;
     }
     
-    public static function getMain() // отбирает для главной странички 6 новостей по дате 
+    public static function getMain() // отбирает для главной странички 9 компаний 
     {
         $db = new DB;   // Создаем объект нужного сласса
         $q="SELECT * FROM companies LIMIT 9;"; //формируем запрос 
             return $db->queryAll($q, "Company"); //возвращаем массив объектов
     }
 
-   }
+}
