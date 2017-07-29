@@ -47,6 +47,25 @@ class Event extends AbstractModel
             ];
         return $data;
     }
+    
+public function check() // отбирает для главной странички 6 новостей по дате 
+    {
+     $check=TRUE;
+        
+          //проверка на нотНуль 
+          if($this->title===NULL or
+            $this->description===NULL or
+            $this->category_id===NULL or
+            $this->date_start===NULL or
+            $this->date_end===NULL or
+             $this->place_id===NULL or
+            $this->company_id===NULL)
+          {$check=FALSE;}
+            
+            return $check;
+    }
+    
+    
 //это надо будет переделать в абстракнтый класс
 //изменить Ордер БАй с price на date
 public static function getMain() // отбирает для главной странички 6 новостей по дате

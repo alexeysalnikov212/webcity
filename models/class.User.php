@@ -25,5 +25,37 @@ class User extends AbstractModel
             }
         endforeach;    
     }
+    
+     public function __set($property,$value) // устанавливает значения свойств объекта
+    {
+        $keys= array_keys(get_class_vars('User'));
+        foreach ($keys as $key):
+            {
+                switch ($property)
+                {
+                case $key:
+                $this->$property = $value;
+                }
+            }
+        endforeach;    
+    }
+    
+     public function check() // отбирает для главной странички 6 новостей по дате 
+    {
+     $check=TRUE;
+        
+         //проверка на уникальность
+        $db = new DB;   // Создаем объект нужного сласса
+         if($db->queryOne("SELECT * FROM users WHERE login = '{$this->login}'")!=NULL)
+        {$check=FALSE;}
+
+        //проверка на нотНуль 
+          if($this->login===NULL or
+            $this->hash===NULL or
+             $this->email===NULL)
+          {$check=FALSE;}
+            
+            return $check;
+    }
 
 }

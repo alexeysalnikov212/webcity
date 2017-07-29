@@ -70,20 +70,32 @@
         public function actionCreate() //создает новую строку в базе
         {
             $ob = new static::$class;
-            $keys= array_keys(get_class_vars(static::$class)); // получаем массив значений свойств объекта (name,description,и т.д.)
-            $values=[];         //создаем массив значений, куда передадим все из $_POST
-            foreach ($keys as $key)         //заполняем данные объекта
+            $values=[];
+            $keys=[];
+            foreach ($_POST as $key=>$value):
             {
-                if (isset($_POST[$key]))
+                $ob->$key=$value;
+                if($ob->$key!=NULL)
                 {
-                    $ob->$key=$_POST[$key];
-                    $values[] = $_POST[$key];
+                    $keys[]=$key;
+                    $values[]=$value;
                 }
-                else $values[]=NULL;        //если данных нет, пишем нул
             }
+            endforeach;
+            
+            if(!$ob->check())
+             {
+                 echo ("Не указаны обязательные поля или такое уже существует");
+             }
+                    
+            else
+            {
             $id = $ob->create($keys,$values);   //вызываем функцию криэйт
             $item = $ob::getOne($id);           //получаем созданную запись
-            include __DIR__."/../views/one".static::$class.".php";
+            echo ("Все хорошо, работайте над view для User");
+            //include __DIR__."/../views/one".static::$class.".php";
+             }
+            
         }
         
         
