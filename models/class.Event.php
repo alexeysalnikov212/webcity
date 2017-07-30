@@ -16,12 +16,16 @@ class Event extends AbstractModel
     private $company_id;
     private $pictures=[];    
     private $place;
+    private $company_name;
+    private $category_name;
     
     public function __construct() // при создании компании создается массив событий этой компании
     {
     //возможно, нужно сделать новый класс Pictures
      $this->place = Place::getPlace($this->place_id);
      $this->pictures = Picture::getPicture($this->id);
+     $this->company_name = Company::getName($this->company_id);
+     $this->category_name = Category::getCategoryName($this->category_id);
     }
 
     public function __get($property) // получает свойства объекта 
@@ -72,7 +76,17 @@ class Event extends AbstractModel
     public static function getMain() // отбирает для главной странички 8 новостей по дате
     {
         $db = new DB;   // Создаем объект нужного сласса
-        $q="SELECT * FROM events ORDER BY date_start LIMIT 8"; //формируем запрос 
+        $today = new DateTime();
+        $week = new DateTime();
+        
+        $week->add(new DateInterval('P7D'));
+        
+        $today= $today->format("y.m.d");
+        $week = $week->format("y.m.d");
+        
+        $q="SELECT * FROM events WHERE date_start  Between '{$today}' AND '{$week}' 
+        OR date_end  Between '{$today}' AND '{$week}'
+        ORDER BY date_start LIMIT 8"; //формируем запрос 
             return $db->queryAll($q, "Event"); //возвращаем массив объектов
     }
 }
