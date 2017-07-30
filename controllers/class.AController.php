@@ -59,7 +59,7 @@
 
             $values = [
                 $view => $items,
-                "title" => $title,
+                "title" => "События",
             ];
             render("template.php", $view.'.php',$values);
         }
@@ -136,7 +136,7 @@
                  echo ("Не указаны обязательные поля или такое уже существует");
              }
                     
-            else if(!$ob->change($keys,$ob))//вызываем функцию криэйт
+            else if(!$ob->change($keys,$ob))//вызываем функцию чэнджь
             {
                 echo ("не изменилось");
             }
