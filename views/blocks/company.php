@@ -7,7 +7,7 @@
                 <div class="jumbotron">
                   <div class="row">
                       <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                          <img src="/../upload/<?=$values["company"]->picture_url;?>" alt="/../upload/<?= $values["company"]->picture_url; ?>" class="img-card">
+                          <img src="upload/<?=$values["company"]->picture_url;?>" alt="upload/<?= $values["company"]->picture_url; ?>" class="img-card">
                       </div>
                       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                           <div class="container" name = "name">
@@ -59,7 +59,7 @@
 
             </div>
             <div class="event-picture">
-              <div class="event-picture-wrap" style="background-image: url('/../upload/<?= $itemx->pictures[0]->picture_url ?>');background-size: cover;"><img src='/../upload/<?= $itemx->pictures[0]->picture_url ?>' alt="" title=""></div>
+              <div class="event-picture-wrap" style="background-image: url('upload/<?= $itemx->pictures[0]->picture_url ?>');background-size: cover;"><img src='upload/<?= $itemx->pictures[0]->picture_url ?>' alt="" title=""></div>
               </div>
           </div>
         </div>

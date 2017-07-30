@@ -26,7 +26,7 @@
               <p><a href="?ctrl=event&act=one&id=<?= $itemx->id; ?>" class="label label-default">Узнать больше</a></p>
             </div>
             <div class="event-picture">
-              <div class="event-picture-wrap" style="background-image: url('/../upload/<?= $itemx->pictures[0]->picture_url ?>');background-size: cover;"><img src='/../upload/<?= $itemx->pictures[0]->picture_url ?>' alt="" title=""></div>
+              <div class="event-picture-wrap" style="background-image: url('upload/<?= $itemx->pictures[0]->picture_url ?>');background-size: cover;"><img src='upload/<?= $itemx->pictures[0]->picture_url ?>' alt="" title=""></div>
               </div>
           </div>
         </div>
