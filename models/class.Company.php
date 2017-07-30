@@ -18,6 +18,11 @@ class Company extends AbstractModel
     private $place;
     private $telephones=[];
     
+    public static function getName($id) // выводит место из таблицы
+    {
+        $db = new DB;
+        return $db->queryOne("SELECT fullname FROM ".self::$table." WHERE id = {$id}", self::$class);
+    }
     public function __construct() // при создании компании создается массив событий этой компании, массив места и массив телефонов
     {
      $this->events = Event::getSome("company_id",$this->id);

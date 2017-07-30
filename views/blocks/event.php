@@ -22,7 +22,7 @@
                             <li><p><span class="glyphicon glyphicon-map-marker one" name = "place" style="width:50px;"></span>
                                 <?= $values["event"]->place->city.", ".$values["event"]->place->street.", ".$values["event"]->place->house; ?>
                                 </p></li>
-                            <li><p><span class="glyphicon glyphicon glyphicon-user one" name = "company" style="width:50px;"></span><a href="index.php?ctrl=company&act=one&id=<?= $values["event"]->company_id; ?>"><?= $values["event"]->company_id; ?></a></p>
+                            <li><p><span class="glyphicon glyphicon glyphicon-user one" name = "company" style="width:50px;"></span><a href="index.php?ctrl=company&act=one&id=<?= $values["event"]->company_id; ?>"><?= $values["event"]->company_name->fullname; ?></a></p>
                           </ul>
                       </div>
                   </div>

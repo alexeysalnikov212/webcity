@@ -16,12 +16,14 @@ class Event extends AbstractModel
     private $company_id;
     private $pictures=[];    
     private $place;
+    private $company_name;
     
     public function __construct() // при создании компании создается массив событий этой компании
     {
     //возможно, нужно сделать новый класс Pictures
      $this->place = Place::getPlace($this->place_id);
      $this->pictures = Picture::getPicture($this->id);
+     $this->company_name = Company::getName($this->company_id);
     }
 
     public function __get($property) // получает свойства объекта 
