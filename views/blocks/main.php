@@ -2,6 +2,7 @@
 
  <div id="events">
  <div class="main-text-body">
+     
     <h2>Самые интересные места отдыха в Краматорске ждут вас!</h2>
   </div>
   <div class="container-fluid ">
@@ -26,7 +27,7 @@
 
             </div>
             <div class="event-picture">
-              <div class="event-picture-wrap" style="background-image: url('/../upload/<?= $itemx->pictures[0]->picture_url ?>');background-size: 100%, 100%;"><img src='/../upload/<?= $itemx->pictures[0]->picture_url ?>' alt="" title=""></div>
+              <div class="event-picture-wrap" style="background-image: url('/../upload/<?= $itemx->pictures[0]->picture_url ?>');background-size: cover;"><img src='/../upload/<?= $itemx->pictures[0]->picture_url ?>' alt="" title=""></div>
               </div>
           </div>
         </div>

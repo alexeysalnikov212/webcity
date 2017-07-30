@@ -30,13 +30,17 @@
                             <button type="button" class="btn btn-default">Категории</button>
                             <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
                               <ul class="dropdown-menu">
-                                  <li><a href="#">Все категории</a></li>
-                                  <li><a href="#">Для детей</a></li>
-                                  <li><a href="#">Концерты</a></li>
-                                  <li><a href="#">Кино</a></li>
-                                  <li><a href="#">Мастер-классы</a></li>
-                                  <li><a href="#">Фестивали</a></li>
-                                  <li><a href="#">18+</a></li>
+                                  <?php $href="?ctrl=event&act=some&key=category_id&value="; ?>
+                                  
+                                  <li><a href="?ctrl=event&act=all">Все категории</a></li>
+                                  <li><a href="<?=$href."2" ?>">Кино</a></li>
+                                  <li><a href="<?=$href."3" ?>">Концерты</a></li>
+                                  <li><a href="<?=$href."4" ?>">Скидки и рекламные акции</a></li>
+                                  <li><a href="<?=$href."5" ?>">Выставки</a></li>
+                                  <li><a href="<?=$href."6" ?>">Для детей</a></li>
+                                  <li><a href="<?=$href."7" ?>">Театр</a></li>
+                                  <li><a href="<?=$href."8" ?>">Спорт</a></li>
+                                  <li><a href="<?=$href."9" ?>">Семинары</a></li>
                               </ul>
                       </div>
                     </div>

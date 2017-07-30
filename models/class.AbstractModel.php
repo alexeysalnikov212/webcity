@@ -35,4 +35,27 @@ abstract class AbstractModel
         $q="INSERT INTO `".static::$table. "` ({$ikeys}) VALUES ('{$ivalues}')";
         return $db->query1($q);
     }
+    
+     public static function change($keys,$ob) // отбирает по указанному критерию 
+    {
+        $db = new DB;
+        foreach($keys as $key):{
+        $q="UPDATE `".static::$table. "` SET  {$key} = '{$ob->$key}' WHERE id = '{$ob->id}'";
+        $db->query1($q);
+        }
+         endforeach;
+         return TRUE;
+    }
+    
+    public static function delete($id) // выводит одно, работает аналогично getAll
+    {
+        
+     //нужна проверка на доступ к данной функции
+        
+        $db = new DB;
+        $statement= $db->queryOne("SELECT * FROM ".static::$table." WHERE id = {$id}", static::$class);
+        if($statement!=NULL)
+        {return $db->queryq("DELETE FROM ".static::$table." WHERE id = {$id}");}
+        else return FALSE;
+    }
 }
