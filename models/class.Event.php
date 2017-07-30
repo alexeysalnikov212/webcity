@@ -17,6 +17,7 @@ class Event extends AbstractModel
     private $pictures=[];    
     private $place;
     private $company_name;
+    private $category_name;
     
     public function __construct() // при создании компании создается массив событий этой компании
     {
@@ -24,6 +25,7 @@ class Event extends AbstractModel
      $this->place = Place::getPlace($this->place_id);
      $this->pictures = Picture::getPicture($this->id);
      $this->company_name = Company::getName($this->company_id);
+     $this->category_name = Category::getCategoryName($this->category_id);
     }
 
     public function __get($property) // получает свойства объекта 
