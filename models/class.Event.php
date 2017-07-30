@@ -76,7 +76,17 @@ class Event extends AbstractModel
     public static function getMain() // отбирает для главной странички 8 новостей по дате
     {
         $db = new DB;   // Создаем объект нужного сласса
-        $q="SELECT * FROM events ORDER BY date_start LIMIT 8"; //формируем запрос 
+        $today = new DateTime();
+        $week = new DateTime();
+        
+        $week->add(new DateInterval('P7D'));
+        
+        $today= $today->format("y.m.d");
+        $week = $week->format("y.m.d");
+        
+        $q="SELECT * FROM events WHERE date_start  Between '{$today}' AND '{$week}' 
+        OR date_end  Between '{$today}' AND '{$week}'
+        ORDER BY date_start LIMIT 8"; //формируем запрос 
             return $db->queryAll($q, "Event"); //возвращаем массив объектов
     }
 }
