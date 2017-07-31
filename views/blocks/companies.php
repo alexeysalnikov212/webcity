@@ -16,7 +16,7 @@
 
       	<a href="?ctrl=company&act=one&id=<?= $itemx->id; ?>" class="pull-left">
 
-    		<img class="picture-media" src="/../upload/<?= $itemx->picture_url; ?>">
+    		<img class="picture-media" src="upload/<?= $itemx->picture_url; ?>">
   		</a>
   		    <div class="company-name">
             
