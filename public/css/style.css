@@ -359,7 +359,7 @@ a:focus{
  /*All company */
 
 .well{
-    background-color:white !important;
+    background-color:rgba(0,0,0,.0001) !important;
     border: none !important;
     min-height: 150px !important;
 }

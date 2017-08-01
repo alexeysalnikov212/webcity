@@ -12,8 +12,12 @@
                     </div>
                     <hr>
                     <ul class="container details">
-                        <li><p><span class="glyphicon glyphicon-earphone one" name="tel" style="width:50px;"></span>+91
-                                90000 00000</p></li>
+                        <li><p><span class="glyphicon glyphicon-earphone one" name="tel" style="width:50px;"></span><?php $telephones = $values["company"]->telephones;
+                        foreach ($telephones as $telephone):{
+                            echo ($telephone->telephone."  ");
+                        }
+                            endforeach;
+                            ?></p></li>
                         <li><p><span class="glyphicon glyphicon-envelope one" name="mail"
                                      style="width:50px;"></span><?= $values["company"]->email; ?></p></li>
                         <li><p><span class="glyphicon glyphicon-map-marker one" name="address"
