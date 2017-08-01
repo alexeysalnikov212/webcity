@@ -16,7 +16,7 @@ class Telephone
     
         public function __get($property) // отбирает для главной странички 6 новостей по дате 
     {
-        $keys= array_keys(get_class_vars('Picture'));
+        $keys= array_keys(get_class_vars('Telephone'));
         foreach ($keys as $key):
             {
                 switch ($property)
@@ -30,7 +30,7 @@ class Telephone
     
     public function __set($property,$value) // устанавливает значения свойств объекта
     {
-        $keys= array_keys(get_class_vars('Picture'));
+        $keys= array_keys(get_class_vars('Telephone'));
         foreach ($keys as $key):
             {
                 switch ($property)

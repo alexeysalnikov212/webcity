@@ -34,7 +34,7 @@
            
        </div>
        <div class="company-footer">
-       <span class="pull-right buttons">
+       <span class="pull-left buttons">
            <a class="btn btn-sm btn-primary" href="?ctrl=company&act=one&id=1" role="button">Больше</a>
         </span>  
       </div>
