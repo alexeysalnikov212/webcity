@@ -14,4 +14,24 @@ class EventController extends AController
         
         protected static $title ="Событие";
         protected static $titles ="Все события";
+
+public function actionCalendar() // берет из баз данные для показа главной странички
+        //и передает их вьюшке Main
+    {
+    $date = $_GET['date'];    
+    $events = Event::getCalendar($date); // вызываем метод этого объкта
+        
+        // получаем все категории для navbar
+        $categories = Category::getAllCategory();
+
+        $values = [
+            "events" => $events,
+            "categories" => $categories,
+            "title" => "Главная",
+        ];
+
+        render("template.php", "events.php", $values);
+
+        //теперь во вьюшке можно будет обращаться к этим переменным как к массиву объектов Event и Company соответственно
     }
+}

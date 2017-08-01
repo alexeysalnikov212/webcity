@@ -89,4 +89,20 @@ class Event extends AbstractModel
         ORDER BY date_start LIMIT 8"; //формируем запрос 
             return $db->queryAll($q, "Event"); //возвращаем массив объектов
     }
+    public static function getCalendar($date) // отбирает для главной странички 8 новостей по дате
+    {
+        $db = new DB;   // Создаем объект нужного сласса
+        $today = new DateTime($date);
+        $tomorrow = new DateTime($date);
+        
+        $tomorrow->add(new DateInterval('P1D'));
+        
+        $today= $today->format("y.m.d");
+        $tomorrow = $tomorrow->format("y.m.d");
+    
+        
+        $q="SELECT * FROM events WHERE date_start < '{$tomorrow}' AND date_end > '{$today}' 
+        ORDER BY date_start LIMIT 8"; //формируем запрос 
+            return $db->queryAll($q, "Event"); //возвращаем массив объектов
+    }
 }
