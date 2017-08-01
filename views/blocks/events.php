@@ -18,6 +18,7 @@
                 <h2><?= $itemx->title; ?></h2>
               </div>
               <div class="event-description">
+               <!-- <p><?= $itemx->description; ?></p> описание события мешает  -->
               </div>
               <div class="event-date">
                 <h3><?= $itemx->date_start; ?></h3>
