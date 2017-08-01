@@ -3,7 +3,7 @@
         <div class="jumbotron">
             <div class="row">
                 <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                    <img src="/../upload/<?= $values["event"]->pictures[0]->picture_url ?>" alt="stack photo"
+                    <img src="upload/<?= $values["event"]->pictures[0]->picture_url ?>" alt="stack photo"
                          class="img-card">
                 </div>
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
@@ -46,13 +46,13 @@
 
                             <div class="item active">
                                 <img alt="" title=""
-                                     src="/../upload/<?= $values["event"]->pictures[0]->picture_url; ?>">
+                                     src="upload/<?= $values["event"]->pictures[0]->picture_url; ?>">
                             </div>
                             <?php
                             foreach ($values["event"]->pictures as $picture): {
                                 ?>
                                 <div class="item">
-                                    <img alt="" title="" src="/../upload/<?= $picture->picture_url; ?>">
+                                    <img alt="" title="" src="upload/<?= $picture->picture_url; ?>">
                                 </div>
                                 <?php
                             }
