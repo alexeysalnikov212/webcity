@@ -27,20 +27,38 @@
                   <div class="col-xs-6 col-md-4"> 
                      <div class="form-group">   
                        <div class="btn-group">
-                            <button type="button" class="btn btn-default">Категории</button>
+                            <button type="button" class="btn btn-default">
+                                <?php
+                                if(isset($_GET["value"]))
+                                {
+                                    $id = $_GET["value"];
+                                    foreach ($values["categories"]as $categories)
+                                    {
+                                        if($categories->id ===$id)
+                                        {
+                                            echo($categories->category_name);
+                                            break;
+                                        }
+                                    }
+                                }else{
+                                    echo("Категории");
+                                }
+                                ?>
+                            </button>
                             <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
                               <ul class="dropdown-menu">
-                                  <?php $href="?ctrl=event&act=some&key=category_id&value="; ?>
-                                  
                                   <li><a href="?ctrl=event&act=all">Все категории</a></li>
-                                  <li><a href="<?=$href."2" ?>">Кино</a></li>
-                                  <li><a href="<?=$href."3" ?>">Концерты</a></li>
-                                  <li><a href="<?=$href."4" ?>">Скидки и рекламные акции</a></li>
-                                  <li><a href="<?=$href."5" ?>">Выставки</a></li>
-                                  <li><a href="<?=$href."6" ?>">Для детей</a></li>
-                                  <li><a href="<?=$href."7" ?>">Театр</a></li>
-                                  <li><a href="<?=$href."8" ?>">Спорт</a></li>
-                                  <li><a href="<?=$href."9" ?>">Семинары</a></li>
+                                  <?php
+                                  foreach ($values["categories"]as $categories)
+                                  {
+                                      echo("<li><a href=\"");
+                                      echo("?ctrl=event&act=some&key=category_id&value=");
+                                      echo($categories->id);
+                                      echo("\">");
+                                      echo($categories->category_name);
+                                      echo("</a></li>\n");
+                                  }
+                                  ?>
                               </ul>
                       </div>
                     </div>
@@ -95,3 +113,13 @@
      </div>
     </nav>
 </div>
+<!--Скрипт выбора категории
+    нужен только для сглаживания перехода между категориями-->
+<script>$(function(){
+
+        $(".dropdown-menu li a").click(function(){
+
+            $(".btn:first-child").text($(this).text());
+            $(".btn:first-child").val($(this).text());
+        });
+    });</script>

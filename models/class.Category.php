@@ -8,6 +8,11 @@ class Category
     private $id;
     private $category_name;
     private $parent;
+
+    public static function getAllCategory(){
+        $db = new DB;
+        return $db->queryAll("SELECT * FROM ".self::$table, self::$class);
+    }
     
     public static function getCategoryName($id) // выводит место из таблицы
     {

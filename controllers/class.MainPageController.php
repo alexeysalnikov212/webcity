@@ -26,9 +26,13 @@ class MainPageController extends Controller
         $events = Event::getMain(); // вызываем метод этого объкта
         $companies = Company::getMain();//и записываем данные в переменные
 
+        // получаем все категории для navbar
+        $categories = Category::getAllCategory();
+
         $values = [
             "events" => $events,
             "companies" => $companies,
+            "categories" => $categories,
             "title" => "Главная",
         ];
 

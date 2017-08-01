@@ -25,8 +25,14 @@
             $view = static::$views;
             $title = static::$titles;
 
+            // получаем все категории для navbar
+            $class_cat ="Category";
+            $qwe = $class_cat;
+            $categories = $qwe::getAllCategory();
+
             $values = [
                 $view => $items,
+                "categories" => $categories,
                 "title" => $title,
             ];
             render("template.php", $view.'.php',$values);
@@ -40,8 +46,12 @@
            $view = static::$view;
             $title = static::$title;
 
+            // получаем все категории для navbar
+            $categories = Category::getAllCategory();
+
             $values = [
                 $view => $item,
+                "categories" => $categories,
                 "title" => $title,
             ];
             render("template.php", $view.'.php',$values);
@@ -57,8 +67,12 @@
             $view = static::$views;
             $title = static::$titles;
 
+            // получаем все категории для navbar
+            $categories = Category::getAllCategory();
+
             $values = [
                 $view => $items,
+                "categories" => $categories,
                 "title" => "События",
             ];
             render("template.php", $view.'.php',$values);
@@ -93,8 +107,12 @@
             $view = static::$view;
             $title = static::$title;
 
+                // получаем все категории для navbar
+                $categories = Category::getAllCategory();
+
             $values = [
                 $view => $item,
+                "categories" => $categories,
                 "title" => $title,
             ];
 
@@ -148,8 +166,13 @@
             $view = static::$view;
             $title = static::$title;
 
-            $values = [
+                // получаем все категории для navbar
+                $categories = Category::getAllCategory();
+
+
+                $values = [
                 $view => $item,
+                    "categories" => $categories,
                 "title" => $title,
             ];
 
