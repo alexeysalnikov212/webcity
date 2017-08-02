@@ -110,11 +110,8 @@
                 "categories" => $this->allCategories,
                 "title" => $title,
             ];
-
             render("template.php", $view.'.php',$values);
-            
              }
-            
         }
         
                 
