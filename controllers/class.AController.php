@@ -5,8 +5,16 @@
 сам контроллер обращается к моделям(models/class.Event),получает оттуда нужную информацию
 и подключает view для вывода в html
 */
+
+
     class AController
     {
+        public $allCategories;
+        
+        public function __construct() // при создании компании создается массив событий этой компании
+    {
+     $this->allCategories = Category::getAllCategory();
+    }
 
         /**
          * Действие по умолчанию
@@ -26,13 +34,9 @@
             $title = static::$titles;
 
             // получаем все категории для navbar
-            $class_cat ="Category";
-            $qwe = $class_cat;
-            $categories = $qwe::getAllCategory();
-
             $values = [
                 $view => $items,
-                "categories" => $categories,
+                "categories" => $this->allCategories,
                 "title" => $title,
             ];
             render("template.php", $view.'.php',$values);
@@ -46,12 +50,9 @@
            $view = static::$view;
             $title = static::$title;
 
-            // получаем все категории для navbar
-            $categories = Category::getAllCategory();
-
             $values = [
                 $view => $item,
-                "categories" => $categories,
+                "categories" => $this->allCategories,
                 "title" => $title,
             ];
             render("template.php", $view.'.php',$values);
@@ -66,13 +67,10 @@
 
             $view = static::$views;
             $title = static::$titles;
-
-            // получаем все категории для navbar
-            $categories = Category::getAllCategory();
-
+            
             $values = [
                 $view => $items,
-                "categories" => $categories,
+                "categories" => $this->allCategories,
                 "title" => "События",
             ];
             render("template.php", $view.'.php',$values);
@@ -107,12 +105,9 @@
             $view = static::$view;
             $title = static::$title;
 
-                // получаем все категории для navbar
-                $categories = Category::getAllCategory();
-
             $values = [
                 $view => $item,
-                "categories" => $categories,
+                "categories" => $this->allCategories,
                 "title" => $title,
             ];
 
@@ -166,13 +161,9 @@
             $view = static::$view;
             $title = static::$title;
 
-                // получаем все категории для navbar
-                $categories = Category::getAllCategory();
-
-
                 $values = [
                 $view => $item,
-                    "categories" => $categories,
+                    "categories" => $this->allCategories,
                 "title" => $title,
             ];
 

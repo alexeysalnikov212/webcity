@@ -8,11 +8,11 @@ class Controller
 {
     public $model;
     public $view;
-
-    /**
-     * Controller constructor.
-     */
-    public function __construct()
+    public $allCategories;
+        
+        public function __construct() // при создании компании создается массив событий этой компании
     {
+     $this->allCategories = Category::getAllCategory();
     }
+    
 }

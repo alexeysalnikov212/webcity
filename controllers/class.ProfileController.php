@@ -10,6 +10,10 @@ class ProfileController extends Controller
      */
     public function actionIndex()
     {
-        render("template.php", "userr.php", ["title" => "Регистрация"]);
+        $values = [
+            "categories" => $this->allCategories,
+            "title" => "Главная",
+        ];
+        render("template.php", "userr.php", $values);
     }
 }

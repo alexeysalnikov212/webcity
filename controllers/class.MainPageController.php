@@ -9,14 +9,6 @@
 class MainPageController extends Controller
 {
 
-
-    /**
-     * MainPageController constructor.
-     */
-    public function __construct()
-    {
-    }
-
     /**
      *  Действие по умолчанию
      */
@@ -26,13 +18,10 @@ class MainPageController extends Controller
         $events = Event::getMain(); // вызываем метод этого объкта
         $companies = Company::getMain();//и записываем данные в переменные
 
-        // получаем все категории для navbar
-        $categories = Category::getAllCategory();
-
         $values = [
             "events" => $events,
             "companies" => $companies,
-            "categories" => $categories,
+            "categories" => $this->allCategories,
             "title" => "Главная",
         ];
 
