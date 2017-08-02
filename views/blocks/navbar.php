@@ -15,28 +15,49 @@
                   <span class="icon-bar"></span>
                 </button>
                 <!-- Бренд или название сайта (отображается в левой части меню) -->
-                <div class="col-md-6">
+               
                   <a class="navbar-brand" href="index.php">            
                   <img src="img/logo.png" class="img-responsive" alt="">
                   </a>
-                </div>
               </div>
             <div class="collapse navbar-collapse" id="navbar-main">
                 <!-- Содержимое основной части -->
-                <ol class="nav navbar-nav">         
+               <ol class="nav navbar-nav">         
                   <div class="col-xs-6 col-md-4"> 
                      <div class="form-group">   
                        <div class="btn-group">
-                            <button type="button" class="btn btn-default">Категории</button>
+                            <button type="button" class="btn btn-default">
+                                <?php
+                                if(isset($_GET["value"]))
+                                {
+                                    $id = $_GET["value"];
+                                    foreach ($values["categories"]as $categories)
+                                    {
+                                        if($categories->id ===$id)
+                                        {
+                                            echo($categories->category_name);
+                                            break;
+                                        }
+                                    }
+                                }else{
+                                    echo("Категории");
+                                }
+                                ?>
+                            </button>
                             <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
                               <ul class="dropdown-menu">
-                                  <li><a href="#">Все категории</a></li>
-                                  <li><a href="#">Для детей</a></li>
-                                  <li><a href="#">Концерты</a></li>
-                                  <li><a href="#">Кино</a></li>
-                                  <li><a href="#">Мастер-классы</a></li>
-                                  <li><a href="#">Фестивали</a></li>
-                                  <li><a href="#">18+</a></li>
+                                  <li><a href="?ctrl=event&act=all">Все категории</a></li>
+                                  <?php
+                                  foreach ($values["categories"]as $categories)
+                                  {
+                                      echo("<li><a href=\"");
+                                      echo("?ctrl=event&act=some&key=category_id&value=");
+                                      echo($categories->id);
+                                      echo("\">");
+                                      echo($categories->category_name);
+                                      echo("</a></li>\n");
+                                  }
+                                  ?>
                               </ul>
                       </div>
                     </div>
@@ -76,7 +97,7 @@
                           <h4 class="modal-title" id="myModalLabel">Авторизация на сайте</h4>
                          </div>
                          <div class="modal-body">
-                           <?php include("../views/login_form.php");?>
+                           <?php include("../views/blocks/login.php");?>
                          </div>
                          <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
@@ -91,3 +112,13 @@
      </div>
     </nav>
 </div>
+<!--Скрипт выбора категории
+    нужен только для сглаживания перехода между категориями-->
+<script>$(function(){
+
+        $(".dropdown-menu li a").click(function(){
+
+            $(".btn:first-child").text($(this).text());
+            $(".btn:first-child").val($(this).text());
+        });
+    });</script>
