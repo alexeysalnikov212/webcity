@@ -91,7 +91,7 @@ INSERT INTO `companies` (`id`, `fullname`, `description`, `place_id`, `email`, `
 CREATE TABLE `events` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL COMMENT 'event''s name',
-  `description` varchar(255) NOT NULL COMMENT 'event''s description',
+  `description` longtext NOT NULL COMMENT 'event''s description',
   `category_id` tinyint(3) UNSIGNED NOT NULL COMMENT 'category',
   `date_start` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'start of event',
   `date_end` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'end of event',
