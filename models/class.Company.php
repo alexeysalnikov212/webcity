@@ -74,7 +74,7 @@ class Company extends AbstractModel
     public static function getMain() // отбирает для главной странички 9 компаний 
     {
         $db = new DB;   // Создаем объект нужного сласса
-        $q="SELECT * FROM companies LIMIT 9;"; //формируем запрос 
+        $q="SELECT * FROM companies LIMIT 21;"; //формируем запрос 
             return $db->queryAll($q, "Company"); //возвращаем массив объектов
     }
 
