@@ -84,8 +84,7 @@ class Event extends AbstractModel
         $today= $today->format("y.m.d");
         $week = $week->format("y.m.d");
         
-        $q="SELECT * FROM events WHERE date_start  Between '{$today}' AND '{$week}' 
-        OR date_end  Between '{$today}' AND '{$week}'
+        $q="SELECT * FROM events WHERE date_start  < '{$week}' AND date_end >'{$today}' 
         ORDER BY date_start LIMIT 8"; //формируем запрос 
             return $db->queryAll($q, "Event"); //возвращаем массив объектов
     }

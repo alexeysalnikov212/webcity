@@ -19,8 +19,7 @@
                         <li><p><span class="glyphicon glyphicon glyphicon-pushpin one" name="category"
                                      style="width:50px;"></span><?= $values["event"]->category_name->category_name; ?>
                             </p></li>
-                        <li><p><span class="glyphicon glyphicon-map-marker one" name="place" style="width:50px;"></span>
-                                <?= $values["event"]->place->city . ", " . $values["event"]->place->street . ", " . $values["event"]->place->house; ?>
+                        <li><p><span class="glyphicon glyphicon-map-marker one" name="place" style="width:50px;"></span><?=$values["event"]->place->city . ", " . $values["event"]->place->street . ", " . $values["event"]->place->house; ?>
                             </p></li>
                         <li><p><span class="glyphicon glyphicon glyphicon-user one" name="company"
                                      style="width:50px;"></span><a
@@ -44,17 +43,26 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner cont-slider">
 
-                            <div class="item active">
+                            <?php 
+                            $countImage=0;
+                            
+                            foreach ($values["event"]->pictures as $picture): 
+                            {    
+                                if($countImage==0)
+                                { ?>
+                                    <div class="item active">
                                 <img alt="" title=""
-                                     src="upload/<?= $values["event"]->pictures[0]->picture_url; ?>">
-                            </div>
-                            <?php
-                            foreach ($values["event"]->pictures as $picture): {
-                                ?>
-                                <div class="item">
-                                    <img alt="" title="" src="upload/<?= $picture->picture_url; ?>">
+                                     src="upload/<?= $picture->picture_url ?> ">
+                                    </div>
+                                <?php 
+                                }
+                                else
+                                { ?>
+                                    <div class="item">
+                                        <img alt="" title="" src="upload/<?=$picture->picture_url; ?>">
                                 </div>
-                                <?php
+                                <?php }
+                                $countImage=1;
                             }
                             endforeach;
                             ?>
@@ -64,22 +72,28 @@
 
 
                         <ol class="carousel-indicators">
-                            <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
-                                <img alt="" src="upload/<?= $values["event"]->pictures[0]->picture_url ?>">
-                            </li>
-
-                            <?php
-                            $slideTo = 1;
-                            foreach ($values["event"]->pictures as $picture): {
-                                ?>
-                                <li class="" data-slide-to="<?= $slideTo ?>" data-target="#article-photo-carousel">
-                                    <img alt="" src="upload/<?= $picture->picture_url ?>">
+                            <?php 
+                            $countImage=0;
+                            
+                            foreach ($values["event"]->pictures as $picture): 
+                            {    
+                                if($countImage==0)
+                                { ?>
+                                    <li class="active" data-slide-to="<?=$countImage; ?>" data-target="#article-photo-carousel">
+                                <img alt="" src="upload/<?=$picture->picture_url; ?>">
                                 </li>
-                                <?php
+                                <?php 
+                                }
+                                else
+                                { ?>
+                                    <li class="" data-slide-to="<?=$countImage; ?>" data-target="#article-photo-carousel">
+                                    <img alt="" src="upload/<?=$picture->picture_url; ?>">
+                                    </li>
+                            <?php }
+                                $countImage=$countImage+1;
                             }
                             endforeach;
                             ?>
-
                         </ol>
                     </div>
                 </div>
