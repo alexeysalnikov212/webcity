@@ -21,11 +21,7 @@
   <fieldset>
     <div class="col-lg-12 form-group margin50">
              
-             <div class="container" name = "login">
-                <h2>Имя пользователя</h2>
-                  </div>
-
-                  <div class="container">
+              <div class="container">
                <h3>Данные пользователя</h3>
                   </div>
 
