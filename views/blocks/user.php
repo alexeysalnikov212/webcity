@@ -229,8 +229,8 @@
 
 <script>
       //Инициализация datetimepicker8 и datetimepicker9
-    $("#datetimepicker8").datetimepicker({pickTime: false, language: 'ru', defaultDate: new Date()});
-    $("#datetimepicker9").datetimepicker({pickTime: false, language: 'ru'});
+    $("#datetimepicker8").datetimepicker({format: 'YYYY-MM-DD', pickTime: false, language: 'ru', defaultDate: new Date()});
+    $("#datetimepicker9").datetimepicker({format: 'YYYY-MM-DD', pickTime: false, language: 'ru'});
     //При изменении даты в 8 datetimepicker, она устанавливается как минимальная для 9 datetimepicker
     $("#datetimepicker8").on("dp.change",function (e) {
       $("#datetimepicker9").data("DateTimePicker").setMinDate(e.date);
