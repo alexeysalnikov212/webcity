@@ -13,10 +13,10 @@ class DB
 
     public function __construct() // это основное для всех запросов
     {   
-        self::init(__DIR__ . "/../config/db.config.json");
-        $this->link = new PDO("mysql:dbname=" . self::$config["database"]["name"] . ";host=" . self::$config["database"]["host"],
-                                self::$config["database"]["username"],
-                                self::$config["database"]["password"]
+        //self::init(__DIR__ . "/../config/db.config.json");
+        $this->link = new PDO("mysql:dbname=id2441188_test;host=localhost",
+                                "id2441188_test",
+                                "12345"
         ); // создаем подключение
         $this->link->exec("SET CHARSET utf8");                              // устанавливаем русский язык
     }
