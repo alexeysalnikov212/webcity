@@ -14,6 +14,6 @@ class ProfileController extends Controller
             "categories" => $this->allCategories,
             "title" => "Главная",
         ];
-        render("template.php", "userr.php", $values);
+        render("template.php", "user.php", $values);
     }
 }

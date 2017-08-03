@@ -21,9 +21,9 @@
   <fieldset>
     <div class="col-lg-12 form-group margin50">
              
-             <div class="container" name = "login">
+             <!--div class="container" name = "login">
                 <h2>Имя пользователя</h2>
-                  </div>
+                  </div-->
 
                   <div class="container">
                <h3>Данные пользователя</h3>
@@ -82,13 +82,13 @@
 <!-- /Данные пользователя -->
 
             <div id="user_company" class="tab-pane">
-            <form class="form-horizontal" action='' method="POST">
+            <form class="form-horizontal" action="index.php?ctrl=Company&act=create" role="form" method="POST">
   <fieldset>
     <div class="col-lg-12 form-group margin50">
              
-             <div class="container" name = "login">
+             <!--div class="container" name = "login">
                 <h2>Имя пользователя</h2>
-                  </div>
+                  </div-->
 
                   <div class="container">
                <h3>Добавить компанию</h3>
@@ -102,31 +102,43 @@
      <div class=" col-lg-12 form-group">
       <label class="col-lg-2" for="Fullname">Компания</label>
       <div class="col-lg-4">
-        <select id="fullname" name="Fullname" class="form-control fullname">
+        <select id="company_id" name="company_id" class="form-control company_id">
+           
             <option value="0">Выбрать компанию</option>
-            <option>Компания 1</option>
+            <?php foreach($values["companies"] as $itemx):?>
+ 
+            <option value="<?= $itemx->id; ?>"><?= $itemx->fullname; ?></option>
+            
+            <?php endforeach ?>
+            
         </select>
+        
       </div>
     </div>
 
-        <div class="col-lg-12 form-group margin50">
+
+    <div class="container">
+               <p><p></p></p><h3>...или - создать компанию</h3>
+    </div>
+
+    <div class="col-lg-12 form-group margin50">
       <label class="col-lg-2"  for="fullname">Полное название</label>
       <div class="col-lg-4">
-        <input type="text" id="fullname" name="fullname" placeholder="Название" class="form-control fullname" value="">
+        <input type="text" id="fullname" name="fullname" placeholder="Название" class="form-control fullname" value="" required>
       </div>
     </div>
      
       <div class="col-lg-12 form-group margin50">
     <label class="col-sm-2" for="Description">Описание</label>
     <div class="col-sm-4">
-        <textarea class="form-control description" id="description" name="Description" rows="3"></textarea>
+        <textarea class="form-control description" id="description" name="Description" rows="3" required></textarea>
      </div>
   </div>
      
     <div class="col-lg-12 form-group">
-      <label class="col-lg-2" for="place_id">Указать адрес</label>
+      <!--label class="col-lg-2" for="place_id">Адрес</label-->
       <div class="col-lg-4">
-        <input type="text" id="place_id" name="place_id" placeholder="Адрес" class="form-control place_id" value="">
+        <input type="hidden" id="place_id" name="place_id" placeholder="Адрес" class="form-control place_id" value="2">
       </div>
     </div>
  
@@ -167,9 +179,9 @@
   <fieldset>
     <div class="col-lg-12 form-group margin50">
              
-             <div class="container" name = "login">
+             <!--div class="container" name = "login">
               <h2>Имя пользователя</h2>
-                  </div>
+                  </div-->
 
                   <div class="container">
                <h3>Добавить событие</h3>
@@ -182,7 +194,7 @@
      <div class=" col-lg-12 form-group">
       <label class="col-lg-2" for="category_id">Категория</label>
       <div class="col-lg-4">
-        <select id="category_id" name="category_id" class="form-control category_id">
+        <select id="category_id" name="category_id" class="form-control category_id" required>
             <option value="0">Выбрать категорию</option>
             <option value="1">Кино</option>
             <option value="2">Концерты</option>
@@ -200,28 +212,28 @@
         <div class="col-lg-12 form-group margin50">
       <label class="col-lg-2"  for="title">Название события</label>
       <div class="col-lg-4">
-        <input type="text" id="title" name="title" class="form-control title" placeholder="Введите название">
+        <input type="text" id="title" name="title" class="form-control title" placeholder="Введите название" required>
       </div>
     </div>
      
       <div class="col-lg-12 form-group margin50">
     <label class="col-sm-2" for="description">Описание</label>
     <div class="col-sm-4">
-        <textarea class="form-control description" id="description" name="description" rows="3" placeholder="Описание"></textarea>
+        <textarea class="form-control description" id="description" name="description" rows="3" placeholder="Описание" required></textarea>
      </div>
   </div>
      
     <div class="col-lg-12 form-group">
-      <label class="col-lg-2" for="place_id">Место проведения мероприятия</label>
+      <!--label class="col-lg-2" for="place_id">Место проведения мероприятия</label-->
       <div class="col-lg-4">
-        <input type="text" id="place_id" name="place_id" placeholder="Адрес" class="form-control place_id">
+        <input type="hidden" id="place_id" name="place_id" placeholder="Адрес" class="form-control place_id" value="2">
       </div>
     </div>
 
     <div class="col-lg-12 form-group">
       <label class="col-lg-2" for="company_id"></label>
       <div class="col-lg-4">
-        <input type="text" id="company_id" name="company_id" placeholder="company_id" class="form-control company_id">
+        <input type="hidden" id="company_id" name="company_id" placeholder="company_id" class="form-control company_id" value="4">
       </div>
     </div>
 
