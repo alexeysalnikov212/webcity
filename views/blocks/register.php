@@ -9,9 +9,6 @@
         <div class="form-group col-md-12">
 				 <label class="sr-only" for="hash">Пароль</label>
 				 <input type="password" class="form-control" name="hash" placeholder="Пароль" required>
-				 </div>
-		 <div class="form-group col-md-12">
-			 <label class="sr-only" for="hash">Подтвердить пароль</label>	 
 				 <input type="password" class="form-control" name="confirm" placeholder="Подтвердить пароль" required>
 			</div>
 			<div class="form-group col-md-12">
