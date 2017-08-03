@@ -18,7 +18,7 @@
                 <h2><?= $itemx->title; ?></h2>
               </div>
               <div class="event-description">
-               <?= $itemx->category_name->category_name; ?>
+               <!-- <p><?= $itemx->description; ?></p> описание события мешает  -->
               </div>
               <div class="event-date">
                 <h3><?= $itemx->date_start; ?></h3>
@@ -34,7 +34,8 @@
           
           ?>
           </div>
-  <div class="container"> 
+
+<div class="container"> 
     <nav aria-label="pagination">
     <ul class="pagination">
     <li class="page-item disabled">
